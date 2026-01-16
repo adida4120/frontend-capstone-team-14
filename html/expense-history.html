@@ -8,18 +8,99 @@
     <link rel="stylesheet" href="../js/transition.js">
 </head>
 <body>
-    <header class="main-header">
-        <nav>
-            <a href="index.html">Home</a>
-            <a href="transition.html">Transaction</a>
-            <a href="expense-history.html">History</a>
-            <a href="dashbord-planner.html">Dashbord</a>
-            <a href="about.html">About</a>
-            <a href="contact.html">Contact</a>
-        </nav>
+<header class="main-header">
+        <div class="container header-container">
+            <div class="logo-group">
+                <img class="moneybuddy-logo" src="/frontend-capstone-team-14/images/MoneyBuddy_Logo.jpg"
+                    alt="money buddy logo">
+                <h1 id="home-title" class="main-title">Money Buddy</h1>
+            </div>
+            <nav class="main-nav">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="transaction.html" class="nav-link">Transaction</a>
+                <a href="expense-history.html" class="nav-link">History</a>
+                <a href="dashbord-planner.html" class="nav-link">Dashbord</a>
+                <a href="about.html" class="nav-link">About</a>
+                <a href="contact.html" class="nav-link">Contact</a>
+            </nav>
+        </div>
     </header>
+ 
+    
+ <main class="container page">
+        <div class="page-head">
+          <h1 class="main-title">Transaction History</h1>
 
 
+          <button id="exportBtn" class="btn bnt--seccess" type="button">
+            <span aria-hidden="true">⬇</span>
+            Export Records
+          </button>
+        </div>
+
+
+        <!-- Filters panel -->
+        <section class="card card--panel" aria-label="History filters">
+            <div class="filter-filed">
+                 <!-- search -->
+                 <div>filed
+                    <label class="label" for="searchInput">Search</label>
+                    <div class="input-with-icon">
+                        <span class="input-icon" aria-hidden="true">🔎</span>
+                        <input id="searchInput" class="input" type="text" placeholder="Filter anything" autocomplete="off"/>
+                    </div>
+                 </div>
+              <!-- Filter mode -->
+               <div class="filter-filed">
+                <label for="filterMode">Filter mode</label>
+                <select name="filter-Mode" id="filterMode" class="input">
+                    <option value="all">All Time</option>
+                    <option value="daily">Daily</option>
+                    <option value="monthly">Monthly</option>
+                    <option value="yearly">Yearly</option>
+                    <option value="range">Range</option>
+                </select>
+               </div>
+                   <!-- Range pickers (מופיע רק כש-range) -->
+                <div id="rangeWrap" class="range hidden" aria-label="Date range">
+                    <div class="filter-filed">
+                        <label class="label" for="fromDate">From</label>
+                        <input id="fromDate" class="input" type="date"/>
+                    </div>
+                    <div class="filter-filed">
+                        <label class="label" for="toDate">To</label>
+                        <input id="toDate" class="input" type="date"/>
+                    </div>
+                </div>
+
+
+                <!-- clear -->
+                <div class="filter-filed clear-actions">
+                    <button id="clearBtn" class="btn btn--ghost" type="button">
+                        <span aria-hidden="true">↻</span>
+                        Clear
+                    </button>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- List -->
+        <section class="list" aria-label="Transaction list">
+            <div id="emptyState" class="list" role="status">
+                No transaction match your filters.
+            </div>
+
+            <ul id="txList" class="tx-list" arira-live="polite"></ul>
+        </section>
+    </main>
+
+                 
+    <footer class="site-footer">
+        <div class="container">
+            <small>©<span id="yaer"></span>MoneyBuddy</small>
+        </div>
+    </footer>
 
 
     <script rel="stylesheet" href="../js/transition.js"></script>
