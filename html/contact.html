@@ -5,19 +5,100 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>contact</title>
     <link rel="stylesheet" href="../css/stylesheet.css">
+    <link rel="stylesheet" href="../css/stylesheet.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Lora:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
+     <style>
+       .main-header{
+           background-color: #ffffff;
+           border-bottom: 2px solid #f1f5f9;
+           padding: 10px 0;
+       }
+       .main-title{
+           margin: 0;
+           font-size: 1.5rem;
+       }
+       .header-container{
+           display: flex;
+           justify-content: space-between;
+           align-items: center;
+           max-width: 1200px;
+           margin: 0 auto;
+           padding: 0 20px;
+       }
+       .logo-group{
+           display: flex;
+           align-items: center;
+           gap: 15px;
+       }
+       .moneybuddy-logo{
+           height: 50px;
+           width: auto;
+       }
+       .nav-link{
+           text-decoration: none;
+           color:#334155;
+           margin-left:20px ;
+           font-weight: 500;
+       }
+       .nav-link:hover{
+           color: #2563eb;
+       }
+   </style>
 </head>
 
 <body>
-    <header>
-        <nav>
-            <a href="index.html">Home</a>
-            <a href="transition.html">Transaction</a>
-            <a href="expense-history.html">History</a>
-            <a href="dashbord-planner.html">Dashbord</a>
-            <a href="about.html">About</a>
-            <a href="contact.html">Contact</a>
-        </nav>
-    </header>
+    <header class="main-header">
+       <div class="container header-container">
+           <div class="logo-group">
+               <img class="moneybuddy-logo" src="/images/MoneyBuddy_Logo.jpg"
+                   alt="money buddy logo">
+                 <h1 id="home-title" class="main-title">Money Buddy</h1>
+           </div>
+
+
+           <nav class="main-nav">
+               <a href="index.html" class="nav-link">Home</a>
+               <a href="transaction.html" class="nav-link">Transaction</a>
+               <a href="expense-history.html" class="nav-link">History</a>
+               <a href="dashbord-planner.html" class="nav-link">Dashbord</a>
+               <a href="about.html" class="nav-link">About</a>
+               <a href="contact.html" class="nav-link">Contact</a>
+           </nav>
+       </div>
+   </header>
+
+
+    <main>
+        <form action="contact.html" method="post" autocomplete="on">
+            <fieldset>
+                <legend>Need a Buddy?</legend>
+                 <section>
+                    <p>We're here to help you with any questions about MoneyBuddy.</p>
+                 </section>
+                <div>
+                    <label for="name">Your Full Name</label>
+                    <input id="name" name="name" type="text" required autocomplete="name">
+                </div>
+                 <div>
+                    <label for="emailAddress">Email Address</label>
+                    <input id="email" name="email" type="email" required autocomplete="name">
+                </div>
+            </fieldset>
+            <fieldset>
+                <legend>Message</legend>
+            </fieldset>
+
+
+           
+        </form>
+       
+    </main>
+    
 
 
 
