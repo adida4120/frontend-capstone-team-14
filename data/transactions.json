@@ -1,0 +1,153 @@
+[
+  {
+    "id": "tx1",
+    "date": "05-01-2026",
+    "type": "expense",
+    "category": "Food",
+    "amount": 45,
+    "note": "Pizza"
+  },
+  {
+    "id": "tx2",
+    "date": "08-01-2026",
+    "type": "expense",
+    "category": "Food",
+    "amount": 32,
+    "note": "Lunch at work"
+  },
+
+  {
+    "id": "tx3",
+    "date": "01-01-2026",
+    "type": "expense",
+    "category": "Rent",
+    "amount": 3200,
+    "note": "January rent"
+  },
+  {
+    "id": "tx4",
+    "date": "01-02-2026",
+    "type": "expense",
+    "category": "Rent",
+    "amount": 3200,
+    "note": "February rent"
+  },
+
+  {
+    "id": "tx5",
+    "date": "10-01-2026",
+    "type": "income",
+    "category": "Salary",
+    "amount": 10000,
+    "note": "December salary"
+  },
+  {
+    "id": "tx6",
+    "date": "10-02-2026",
+    "type": "income",
+    "category": "Salary",
+    "amount": 10200,
+    "note": "January salary"
+  },
+
+  {
+    "id": "tx7",
+    "date": "15-01-2026",
+    "type": "expense",
+    "category": "Entertainment",
+    "amount": 120,
+    "note": "Movie night"
+  },
+  {
+    "id": "tx8",
+    "date": "22-01-2026",
+    "type": "expense",
+    "category": "Entertainment",
+    "amount": 260,
+    "note": "Concert ticket"
+  },
+
+  {
+    "id": "tx9",
+    "date": "12-01-2026",
+    "type": "expense",
+    "category": "Transport",
+    "amount": 18,
+    "note": "Bus"
+  },
+  {
+    "id": "tx10",
+    "date": "20-01-2026",
+    "type": "expense",
+    "category": "Transport",
+    "amount": 65,
+    "note": "Gas"
+  },
+  {
+    "id": "tx11",
+    "date": "18-01-2026",
+    "type": "expense",
+    "category": "Other",
+    "amount": 90,
+    "note": "Pharmacy"
+  },
+  {
+    "id": "tx12",
+    "date": "25-01-2026",
+    "type": "expense",
+    "category": "Other",
+    "amount": 150,
+    "note": "Gift"
+  }
+  ,
+{
+  "id": "tx13",
+  "date": "2025-10-05",
+  "type": "expense",
+  "category": "Food",
+  "amount": 40,
+  "note": "Groceries"
+},
+{
+  "id": "tx14",
+  "date": "2025-10-10",
+  "type": "expense",
+  "category": "Transport",
+  "amount": 25,
+  "note": "Bus pass"
+},
+
+{
+  "id": "tx15",
+  "date": "2025-11-01",
+  "type": "expense",
+  "category": "Rent",
+  "amount": 3100,
+  "note": "November rent"
+},
+{
+  "id": "tx16",
+  "date": "2025-11-10",
+  "type": "income",
+  "category": "Salary",
+  "amount": 9800,
+  "note": "October salary"
+},
+
+{
+  "id": "tx17",
+  "date": "2025-12-12",
+  "type": "expense",
+  "category": "Entertainment",
+  "amount": 180,
+  "note": "Theater"
+},
+{
+  "id": "tx18",
+  "date": "2025-12-20",
+  "type": "expense",
+  "category": "Other",
+  "amount": 220,
+  "note": "Holiday gifts"
+}
+]
