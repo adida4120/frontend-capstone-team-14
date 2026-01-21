@@ -1,3 +1,65 @@
+ /*base/global*/
+    /*header design*/
+        .main-header{
+            background-color: #ffffff;
+            border-bottom: 2px solid #f1f5f9;
+            padding: 10px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            font-family: sans-serif;
+        }
+        .main-title{
+            margin: 0;
+            font-size: 1.5rem;
+        }
+        .header-container{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        .logo-group{
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        .moneybuddy-logo{
+            height: 50px;
+            width: auto;
+        }
+        .nav-link{
+            text-decoration: none;
+            color:#334155;
+            margin-left:20px ;
+            font-weight: 500;
+        }
+        .nav-link:hover{
+            color: #2563eb;
+        }
+     /*header design*/
+
+     /*footer design*/
+
+     /*footer design*/
+
+     /*media design*/
+     
+     /*media design*/
+
+     /*buttons design*/
+     
+     /*buttons design*/
+ /*base/global*/
+
+     /*hero design*/
+     #hero{
+        background:linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+        padding: 100px 0;
+        color: #ffffff;}
+
   /*removes the white lines on the side*/
   * {
       margin: 0;
