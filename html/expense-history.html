@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="../css/stylesheet.css">
-    <link rel="stylesheet" href="../js/transition.js">
 </head>
+
 <body>
 <header class="main-header">
         <div class="container header-container">
@@ -29,10 +29,10 @@
     
  <main class="container page">
         <div class="page-head">
-          <h1 class="main-title">Transaction History</h1>
+          <h2 class="history-main-title section-title ">Transaction History</h2>
 
 
-          <button id="exportBtn" class="btn bnt--seccess" type="button">
+          <button id="exportBtn" class="btn bnt--success" type="button">
             <span aria-hidden="true">⬇</span>
             Export Records
           </button>
@@ -43,7 +43,7 @@
         <section class="card card--panel" aria-label="History filters">
             <div class="filter-filed">
                  <!-- search -->
-                 <div>filed
+                 <div class="filed">
                     <label class="label" for="searchInput">Search</label>
                     <div class="input-with-icon">
                         <span class="input-icon" aria-hidden="true">🔎</span>
@@ -91,7 +91,7 @@
                 No transaction match your filters.
             </div>
 
-            <ul id="txList" class="tx-list" arira-live="polite"></ul>
+            <ul id="txList" class="tx-list" aria-live="polite"></ul>
         </section>
     </main>
 
