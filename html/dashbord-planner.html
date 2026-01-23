@@ -47,9 +47,9 @@
         <div class="dash-header">
             <h2 class="dash-title">Analytics</h2>
             <div class="date-selector">
-                <button class="date-arrow" aria-label="Previous Month"> &lt; </button>
-                <span class="current-date">January 2026</span>
-                <button class="date-arrow" aria-label="Next Month"> &gt; </button>
+                <button class="date-arrow" id="prevMonth" aria-label="Previous Month"> &lt; </button>
+                <span class="current-date" id="currentDateDisplay">January 2026</span>
+                <button class="date-arrow" id="nextMonth" aria-label="Next Month"> &gt; </button>
             </div>
         </div>
         <section class="stats-container">
@@ -70,19 +70,16 @@
             <div class="charts-top-row">
                 <div class="chart-box" id="category-mix">
                     <h4>Category Mix</h4>
-                    <img src="https://github.com/adida4120/frontend-capstone-team-14/blob/feature-layout/images/Dashboard-pie-chart.png?raw=true"
-                        alt="Analytics Chart">
+                    <canvas id="categoryChart"></canvas>
                 </div>
                 <div class="chart-box" id="top-categories">
                     <h4>Top Categories</h4>
-                    <img src=https://github.com/adida4120/frontend-capstone-team-14/blob/feature-layout/images/Dashboard-top-categories.png?raw=true
-                        alt="Categories List">
+                    <canvas id="topCategoriesChart"></canvas>
                 </div>
             </div>
             <div class="chart-box" id="full-width">
                 <h4>Expense Trend (6 Months)</h4>
-                <img src="https://github.com/adida4120/frontend-capstone-team-14/blob/feature-layout/images/Dashboard-ExpenseTrend.png?raw=true"
-                    alt="Trend Chart">
+               <canvas id="trendChart"></canvas>
             </div>
         
         
@@ -100,7 +97,9 @@
             <p class="footer-copyright">© 2026 Final Project - Finnacial Planner.</p>
         </div>
     </footer>
-    <script rel="stylesheet" src="../js/transition.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script rel="stylesheet" src="../js/common.js"></script>
+    <script rel="stylesheet2" src="../js/dashboard.js"></script>
 </body>
 
 </html>

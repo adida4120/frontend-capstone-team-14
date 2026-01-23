@@ -1,0 +1,2002 @@
+[
+  {
+    "id": "tx1",
+    "date": "01-01-2024",
+    "type": "expense",
+    "category": "Rent",
+    "amount": 3000,
+    "note": "January rent"
+  },
+  {
+    "id": "tx2",
+    "date": "10-01-2024",
+    "type": "income",
+    "category": "Salary",
+    "amount": 9050,
+    "note": "December salary"
+  },
+  {
+    "id": "tx3",
+    "date": "02-01-2024",
+    "type": "expense",
+    "category": "Food",
+    "amount": 67,
+    "note": "Groceries"
+  },
+  {
+    "id": "tx4",
+    "date": "05-01-2024",
+    "type": "expense",
+    "category": "Food",
+    "amount": 67,
+    "note": "Sushi"
+  },
+  {
+    "id": "tx5",
+    "date": "09-01-2024",
+    "type": "expense",
+    "category": "Transport",
+    "amount": 28,
+    "note": "Bus"
+  },
+  {
+    "id": "tx6",
+    "date": "12-01-2024",
+    "type": "expense",
+    "category": "Transport",
+    "amount": 29,
+    "note": "Bus"
+  },
+  {
+    "id": "tx7",
+    "date": "15-01-2024",
+    "type": "expense",
+    "category": "Entertainment",
+    "amount": 258,
+    "note": "Movie night"
+  },
+  {
+    "id": "tx8",
+    "date": "19-01-2024",
+    "type": "expense",
+    "category": "Entertainment",
+    "amount": 193,
+    "note": "Movie night"
+  },
+  {
+    "id": "tx9",
+    "date": "24-01-2024",
+    "type": "expense",
+    "category": "Other",
+    "amount": 59,
+    "note": "Haircut"
+  },
+  {
+    "id": "tx10",
+    "date": "29-01-2024",
+    "type": "expense",
+    "category": "Other",
+    "amount": 183,
+    "note": "Phone bill"
+  },
+  {
+    "id": "tx11",
+    "date": "01-02-2024",
+    "type": "expense",
+    "category": "Rent",
+    "amount": 3000,
+    "note": "February rent"
+  },
+  {
+    "id": "tx12",
+    "date": "10-02-2024",
+    "type": "income",
+    "category": "Salary",
+    "amount": 9100,
+    "note": "January salary"
+  },
+  {
+    "id": "tx13",
+    "date": "02-02-2024",
+    "type": "expense",
+    "category": "Food",
+    "amount": 33,
+    "note": "Lunch at work"
+  },
+  {
+    "id": "tx14",
+    "date": "06-02-2024",
+    "type": "expense",
+    "category": "Food",
+    "amount": 78,
+    "note": "Dinner out"
+  },
+  {
+    "id": "tx15",
+    "date": "09-02-2024",
+    "type": "expense",
+    "category": "Transport",
+    "amount": 28,
+    "note": "Train"
+  },
+  {
+    "id": "tx16",
+    "date": "11-02-2024",
+    "type": "expense",
+    "category": "Transport",
+    "amount": 87,
+    "note": "Taxi"
+  },
+  {
+    "id": "tx17",
+    "date": "12-02-2024",
+    "type": "expense",
+    "category": "Entertainment",
+    "amount": 252,
+    "note": "Bowling"
+  },
+  {
+    "id": "tx18",
+    "date": "15-02-2024",
+    "type": "expense",
+    "category": "Entertainment",
+    "amount": 256,
+    "note": "Streaming subscription"
+  },
+  {
+    "id": "tx19",
+    "date": "18-02-2024",
+    "type": "expense",
+    "category": "Other",
+    "amount": 195,
+    "note": "Books"
+  },
+  {
+    "id": "tx20",
+    "date": "27-02-2024",
+    "type": "expense",
+    "category": "Other",
+    "amount": 105,
+    "note": "Gym"
+  },
+  {
+    "id": "tx21",
+    "date": "01-03-2024",
+    "type": "expense",
+    "category": "Rent",
+    "amount": 3000,
+    "note": "March rent"
+  },
+  {
+    "id": "tx22",
+    "date": "10-03-2024",
+    "type": "income",
+    "category": "Salary",
+    "amount": 9150,
+    "note": "February salary"
+  },
+  {
+    "id": "tx23",
+    "date": "02-03-2024",
+    "type": "expense",
+    "category": "Food",
+    "amount": 41,
+    "note": "Groceries"
+  },
+  {
+    "id": "tx24",
+    "date": "06-03-2024",
+    "type": "expense",
+    "category": "Food",
+    "amount": 35,
+    "note": "Coffee"
+  },
+  {
+    "id": "tx25",
+    "date": "10-03-2024",
+    "type": "expense",
+    "category": "Transport",
+    "amount": 21,
+    "note": "Bus"
+  },
+  {
+    "id": "tx26",
+    "date": "13-03-2024",
+    "type": "expense",
+    "category": "Transport",
+    "amount": 19,
+    "note": "Parking"
+  },
+  {
+    "id": "tx27",
+    "date": "17-03-2024",
+    "type": "expense",
+    "category": "Entertainment",
+    "amount": 213,
+    "note": "Theater"
+  },
+  {
+    "id": "tx28",
+    "date": "18-03-2024",
+    "type": "expense",
+    "category": "Entertainment",
+    "amount": 129,
+    "note": "Bar night"
+  },
+  {
+    "id": "tx29",
+    "date": "20-03-2024",
+    "type": "expense",
+    "category": "Other",
+    "amount": 166,
+    "note": "Clothes"
+  },
+  {
+    "id": "tx30",
+    "date": "28-03-2024",
+    "type": "expense",
+    "category": "Other",
+    "amount": 91,
+    "note": "Pharmacy"
+  },
+  {
+    "id": "tx31",
+    "date": "01-04-2024",
+    "type": "expense",
+    "category": "Rent",
+    "amount": 3000,
+    "note": "April rent"
+  },
+  {
+    "id": "tx32",
+    "date": "10-04-2024",
+    "type": "income",
+    "category": "Salary",
+    "amount": 9200,
+    "note": "March salary"
+  },
+  {
+    "id": "tx33",
+    "date": "03-04-2024",
+    "type": "expense",
+    "category": "Food",
+    "amount": 68,
+    "note": "Groceries"
+  },
+  {
+    "id": "tx34",
+    "date": "06-04-2024",
+    "type": "expense",
+    "category": "Food",
+    "amount": 23,
+    "note": "Coffee"
+  },
+  {
+    "id": "tx35",
+    "date": "09-04-2024",
+    "type": "expense",
+    "category": "Transport",
+    "amount": 65,
+    "note": "Gas"
+  },
+  {
+    "id": "tx36",
+    "date": "14-04-2024",
+    "type": "expense",
+    "category": "Transport",
+    "amount": 31,
+    "note": "Bus"
+  },
+  {
+    "id": "tx37",
+    "date": "20-04-2024",
+    "type": "expense",
+    "category": "Entertainment",
+    "amount": 195,
+    "note": "Concert ticket"
+  },
+  {
+    "id": "tx38",
+    "date": "23-04-2024",
+    "type": "expense",
+    "category": "Entertainment",
+    "amount": 235,
+    "note": "Theater"
+  },
+  {
+    "id": "tx39",
+    "date": "27-04-2024",
+    "type": "expense",
+    "category": "Other",
+    "amount": 66,
+    "note": "Books"
+  },
+  {
+    "id": "tx40",
+    "date": "29-04-2024",
+    "type": "expense",
+    "category": "Other",
+    "amount": 120,
+    "note": "Phone bill"
+  },
+  {
+    "id": "tx41",
+    "date": "01-05-2024",
+    "type": "expense",
+    "category": "Rent",
+    "amount": 3000,
+    "note": "May rent"
+  },
+  {
+    "id": "tx42",
+    "date": "10-05-2024",
+    "type": "income",
+    "category": "Salary",
+    "amount": 9250,
+    "note": "April salary"
+  },
+  {
+    "id": "tx43",
+    "date": "02-05-2024",
+    "type": "expense",
+    "category": "Food",
+    "amount": 30,
+    "note": "Lunch at work"
+  },
+  {
+    "id": "tx44",
+    "date": "07-05-2024",
+    "type": "expense",
+    "category": "Food",
+    "amount": 72,
+    "note": "Dinner out"
+  },
+  {
+    "id": "tx45",
+    "date": "12-05-2024",
+    "type": "expense",
+    "category": "Transport",
+    "amount": 28,
+    "note": "Train"
+  },
+  {
+    "id": "tx46",
+    "date": "15-05-2024",
+    "type": "expense",
+    "category": "Transport",
+    "amount": 74,
+    "note": "Gas"
+  },
+  {
+    "id": "tx47",
+    "date": "18-05-2024",
+    "type": "expense",
+    "category": "Entertainment",
+    "amount": 77,
+    "note": "Streaming subscription"
+  },
+  {
+    "id": "tx48",
+    "date": "22-05-2024",
+    "type": "expense",
+    "category": "Entertainment",
+    "amount": 158,
+    "note": "Movie night"
+  },
+  {
+    "id": "tx49",
+    "date": "26-05-2024",
+    "type": "expense",
+    "category": "Other",
+    "amount": 178,
+    "note": "Clothes"
+  },
+  {
+    "id": "tx50",
+    "date": "29-05-2024",
+    "type": "expense",
+    "category": "Other",
+    "amount": 137,
+    "note": "Electronics"
+  },
+  {
+    "id": "tx51",
+    "date": "01-06-2024",
+    "type": "expense",
+    "category": "Rent",
+    "amount": 3000,
+    "note": "June rent"
+  },
+  {
+    "id": "tx52",
+    "date": "10-06-2024",
+    "type": "income",
+    "category": "Salary",
+    "amount": 9300,
+    "note": "May salary"
+  },
+  {
+    "id": "tx53",
+    "date": "03-06-2024",
+    "type": "expense",
+    "category": "Food",
+    "amount": 58,
+    "note": "Groceries"
+  },
+  {
+    "id": "tx54",
+    "date": "06-06-2024",
+    "type": "expense",
+    "category": "Food",
+    "amount": 26,
+    "note": "Coffee"
+  },
+  {
+    "id": "tx55",
+    "date": "12-06-2024",
+    "type": "expense",
+    "category": "Transport",
+    "amount": 56,
+    "note": "Gas"
+  },
+  {
+    "id": "tx56",
+    "date": "15-06-2024",
+    "type": "expense",
+    "category": "Transport",
+    "amount": 27,
+    "note": "Bus"
+  },
+  {
+    "id": "tx57",
+    "date": "18-06-2024",
+    "type": "expense",
+    "category": "Entertainment",
+    "amount": 228,
+    "note": "Concert ticket"
+  },
+  {
+    "id": "tx58",
+    "date": "23-06-2024",
+    "type": "expense",
+    "category": "Entertainment",
+    "amount": 207,
+    "note": "Bar night"
+  },
+  {
+    "id": "tx59",
+    "date": "25-06-2024",
+    "type": "expense",
+    "category": "Other",
+    "amount": 118,
+    "note": "Books"
+  },
+  {
+    "id": "tx60",
+    "date": "29-06-2024",
+    "type": "expense",
+    "category": "Other",
+    "amount": 161,
+    "note": "Clothes"
+  },
+  {
+    "id": "tx61",
+    "date": "01-07-2024",
+    "type": "expense",
+    "category": "Rent",
+    "amount": 3000,
+    "note": "July rent"
+  },
+  {
+    "id": "tx62",
+    "date": "10-07-2024",
+    "type": "income",
+    "category": "Salary",
+    "amount": 9350,
+    "note": "June salary"
+  },
+  {
+    "id": "tx63",
+    "date": "02-07-2024",
+    "type": "expense",
+    "category": "Food",
+    "amount": 66,
+    "note": "Groceries"
+  },
+  {
+    "id": "tx64",
+    "date": "07-07-2024",
+    "type": "expense",
+    "category": "Food",
+    "amount": 43,
+    "note": "Pizza"
+  },
+  {
+    "id": "tx65",
+    "date": "11-07-2024",
+    "type": "expense",
+    "category": "Transport",
+    "amount": 21,
+    "note": "Bus"
+  },
+  {
+    "id": "tx66",
+    "date": "15-07-2024",
+    "type": "expense",
+    "category": "Transport",
+    "amount": 79,
+    "note": "Gas"
+  },
+  {
+    "id": "tx67",
+    "date": "19-07-2024",
+    "type": "expense",
+    "category": "Entertainment",
+    "amount": 205,
+    "note": "Theater"
+  },
+  {
+    "id": "tx68",
+    "date": "22-07-2024",
+    "type": "expense",
+    "category": "Entertainment",
+    "amount": 121,
+    "note": "Movie night"
+  },
+  {
+    "id": "tx69",
+    "date": "26-07-2024",
+    "type": "expense",
+    "category": "Other",
+    "amount": 58,
+    "note": "Haircut"
+  },
+  {
+    "id": "tx70",
+    "date": "29-07-2024",
+    "type": "expense",
+    "category": "Other",
+    "amount": 180,
+    "note": "Electronics"
+  },
+  {
+    "id": "tx71",
+    "date": "01-08-2024",
+    "type": "expense",
+    "category": "Rent",
+    "amount": 3000,
+    "note": "August rent"
+  },
+  {
+    "id": "tx72",
+    "date": "10-08-2024",
+    "type": "income",
+    "category": "Salary",
+    "amount": 9400,
+    "note": "July salary"
+  },
+  {
+    "id": "tx73",
+    "date": "02-08-2024",
+    "type": "expense",
+    "category": "Food",
+    "amount": 37,
+    "note": "Lunch at work"
+  },
+  {
+    "id": "tx74",
+    "date": "06-08-2024",
+    "type": "expense",
+    "category": "Food",
+    "amount": 74,
+    "note": "Dinner out"
+  },
+  {
+    "id": "tx75",
+    "date": "09-08-2024",
+    "type": "expense",
+    "category": "Transport",
+    "amount": 25,
+    "note": "Train"
+  },
+  {
+    "id": "tx76",
+    "date": "14-08-2024",
+    "type": "expense",
+    "category": "Transport",
+    "amount": 68,
+    "note": "Gas"
+  },
+  {
+    "id": "tx77",
+    "date": "17-08-2024",
+    "type": "expense",
+    "category": "Entertainment",
+    "amount": 79,
+    "note": "Streaming subscription"
+  },
+  {
+    "id": "tx78",
+    "date": "21-08-2024",
+    "type": "expense",
+    "category": "Entertainment",
+    "amount": 227,
+    "note": "Concert ticket"
+  },
+  {
+    "id": "tx79",
+    "date": "24-08-2024",
+    "type": "expense",
+    "category": "Other",
+    "amount": 84,
+    "note": "Pharmacy"
+  },
+  {
+    "id": "tx80",
+    "date": "30-08-2024",
+    "type": "expense",
+    "category": "Other",
+    "amount": 122,
+    "note": "Phone bill"
+  },
+  {
+    "id": "tx81",
+    "date": "01-09-2024",
+    "type": "expense",
+    "category": "Rent",
+    "amount": 3000,
+    "note": "September rent"
+  },
+  {
+    "id": "tx82",
+    "date": "10-09-2024",
+    "type": "income",
+    "category": "Salary",
+    "amount": 9450,
+    "note": "August salary"
+  },
+  {
+    "id": "tx83",
+    "date": "04-09-2024",
+    "type": "expense",
+    "category": "Food",
+    "amount": 70,
+    "note": "Groceries"
+  },
+  {
+    "id": "tx84",
+    "date": "06-09-2024",
+    "type": "expense",
+    "category": "Food",
+    "amount": 25,
+    "note": "Coffee"
+  },
+  {
+    "id": "tx85",
+    "date": "11-09-2024",
+    "type": "expense",
+    "category": "Transport",
+    "amount": 16,
+    "note": "Bus"
+  },
+  {
+    "id": "tx86",
+    "date": "15-09-2024",
+    "type": "expense",
+    "category": "Transport",
+    "amount": 88,
+    "note": "Gas"
+  },
+  {
+    "id": "tx87",
+    "date": "18-09-2024",
+    "type": "expense",
+    "category": "Entertainment",
+    "amount": 146,
+    "note": "Movie night"
+  },
+  {
+    "id": "tx88",
+    "date": "20-09-2024",
+    "type": "expense",
+    "category": "Entertainment",
+    "amount": 221,
+    "note": "Theater"
+  },
+  {
+    "id": "tx89",
+    "date": "23-09-2024",
+    "type": "expense",
+    "category": "Other",
+    "amount": 167,
+    "note": "Clothes"
+  },
+  {
+    "id": "tx90",
+    "date": "27-09-2024",
+    "type": "expense",
+    "category": "Other",
+    "amount": 52,
+    "note": "Books"
+  },
+  {
+    "id": "tx91",
+    "date": "01-10-2024",
+    "type": "expense",
+    "category": "Rent",
+    "amount": 3000,
+    "note": "October rent"
+  },
+  {
+    "id": "tx92",
+    "date": "10-10-2024",
+    "type": "income",
+    "category": "Salary",
+    "amount": 9500,
+    "note": "September salary"
+  },
+  {
+    "id": "tx93",
+    "date": "03-10-2024",
+    "type": "expense",
+    "category": "Food",
+    "amount": 49,
+    "note": "Groceries"
+  },
+  {
+    "id": "tx94",
+    "date": "06-10-2024",
+    "type": "expense",
+    "category": "Food",
+    "amount": 75,
+    "note": "Dinner out"
+  },
+  {
+    "id": "tx95",
+    "date": "09-10-2024",
+    "type": "expense",
+    "category": "Transport",
+    "amount": 44,
+    "note": "Taxi"
+  },
+  {
+    "id": "tx96",
+    "date": "15-10-2024",
+    "type": "expense",
+    "category": "Transport",
+    "amount": 29,
+    "note": "Parking"
+  },
+  {
+    "id": "tx97",
+    "date": "18-10-2024",
+    "type": "expense",
+    "category": "Entertainment",
+    "amount": 296,
+    "note": "Concert ticket"
+  },
+  {
+    "id": "tx98",
+    "date": "20-10-2024",
+    "type": "expense",
+    "category": "Entertainment",
+    "amount": 84,
+    "note": "Streaming subscription"
+  },
+  {
+    "id": "tx99",
+    "date": "26-10-2024",
+    "type": "expense",
+    "category": "Other",
+    "amount": 215,
+    "note": "Electronics"
+  },
+  {
+    "id": "tx100",
+    "date": "29-10-2024",
+    "type": "expense",
+    "category": "Other",
+    "amount": 66,
+    "note": "Haircut"
+  },
+  {
+    "id": "tx101",
+    "date": "01-11-2024",
+    "type": "expense",
+    "category": "Rent",
+    "amount": 3000,
+    "note": "November rent"
+  },
+  {
+    "id": "tx102",
+    "date": "10-11-2024",
+    "type": "income",
+    "category": "Salary",
+    "amount": 9550,
+    "note": "October salary"
+  },
+  {
+    "id": "tx103",
+    "date": "03-11-2024",
+    "type": "expense",
+    "category": "Food",
+    "amount": 69,
+    "note": "Groceries"
+  },
+  {
+    "id": "tx104",
+    "date": "06-11-2024",
+    "type": "expense",
+    "category": "Food",
+    "amount": 56,
+    "note": "Sushi"
+  },
+  {
+    "id": "tx105",
+    "date": "09-11-2024",
+    "type": "expense",
+    "category": "Transport",
+    "amount": 18,
+    "note": "Bus"
+  },
+  {
+    "id": "tx106",
+    "date": "12-11-2024",
+    "type": "expense",
+    "category": "Transport",
+    "amount": 70,
+    "note": "Gas"
+  },
+  {
+    "id": "tx107",
+    "date": "15-11-2024",
+    "type": "expense",
+    "category": "Entertainment",
+    "amount": 147,
+    "note": "Movie night"
+  },
+  {
+    "id": "tx108",
+    "date": "19-11-2024",
+    "type": "expense",
+    "category": "Entertainment",
+    "amount": 234,
+    "note": "Theater"
+  },
+  {
+    "id": "tx109",
+    "date": "23-11-2024",
+    "type": "expense",
+    "category": "Other",
+    "amount": 45,
+    "note": "Books"
+  },
+  {
+    "id": "tx110",
+    "date": "28-11-2024",
+    "type": "expense",
+    "category": "Other",
+    "amount": 214,
+    "note": "Clothes"
+  },
+  {
+    "id": "tx111",
+    "date": "01-12-2024",
+    "type": "expense",
+    "category": "Rent",
+    "amount": 3000,
+    "note": "December rent"
+  },
+  {
+    "id": "tx112",
+    "date": "10-12-2024",
+    "type": "income",
+    "category": "Salary",
+    "amount": 9600,
+    "note": "November salary"
+  },
+  {
+    "id": "tx113",
+    "date": "03-12-2024",
+    "type": "expense",
+    "category": "Food",
+    "amount": 54,
+    "note": "Groceries"
+  },
+  {
+    "id": "tx114",
+    "date": "06-12-2024",
+    "type": "expense",
+    "category": "Food",
+    "amount": 34,
+    "note": "Coffee"
+  },
+  {
+    "id": "tx115",
+    "date": "09-12-2024",
+    "type": "expense",
+    "category": "Transport",
+    "amount": 26,
+    "note": "Train"
+  },
+  {
+    "id": "tx116",
+    "date": "14-12-2024",
+    "type": "expense",
+    "category": "Transport",
+    "amount": 62,
+    "note": "Gas"
+  },
+  {
+    "id": "tx117",
+    "date": "18-12-2024",
+    "type": "expense",
+    "category": "Entertainment",
+    "amount": 226,
+    "note": "Concert ticket"
+  },
+  {
+    "id": "tx118",
+    "date": "21-12-2024",
+    "type": "expense",
+    "category": "Entertainment",
+    "amount": 75,
+    "note": "Streaming subscription"
+  },
+  {
+    "id": "tx119",
+    "date": "24-12-2024",
+    "type": "expense",
+    "category": "Other",
+    "amount": 209,
+    "note": "Gift"
+  },
+  {
+    "id": "tx120",
+    "date": "29-12-2024",
+    "type": "expense",
+    "category": "Other",
+    "amount": 88,
+    "note": "Pharmacy"
+  },
+  {
+    "id": "tx121",
+    "date": "01-01-2025",
+    "type": "expense",
+    "category": "Rent",
+    "amount": 3100,
+    "note": "January rent"
+  },
+  {
+    "id": "tx122",
+    "date": "10-01-2025",
+    "type": "income",
+    "category": "Salary",
+    "amount": 9840,
+    "note": "December salary"
+  },
+  {
+    "id": "tx123",
+    "date": "02-01-2025",
+    "type": "expense",
+    "category": "Food",
+    "amount": 69,
+    "note": "Dinner out"
+  },
+  {
+    "id": "tx124",
+    "date": "06-01-2025",
+    "type": "expense",
+    "category": "Food",
+    "amount": 73,
+    "note": "Groceries"
+  },
+  {
+    "id": "tx125",
+    "date": "10-01-2025",
+    "type": "expense",
+    "category": "Transport",
+    "amount": 41,
+    "note": "Taxi"
+  },
+  {
+    "id": "tx126",
+    "date": "15-01-2025",
+    "type": "expense",
+    "category": "Transport",
+    "amount": 20,
+    "note": "Bus"
+  },
+  {
+    "id": "tx127",
+    "date": "18-01-2025",
+    "type": "expense",
+    "category": "Entertainment",
+    "amount": 98,
+    "note": "Movie night"
+  },
+  {
+    "id": "tx128",
+    "date": "22-01-2025",
+    "type": "expense",
+    "category": "Entertainment",
+    "amount": 129,
+    "note": "Bar night"
+  },
+  {
+    "id": "tx129",
+    "date": "24-01-2025",
+    "type": "expense",
+    "category": "Other",
+    "amount": 156,
+    "note": "Clothes"
+  },
+  {
+    "id": "tx130",
+    "date": "27-01-2025",
+    "type": "expense",
+    "category": "Other",
+    "amount": 222,
+    "note": "Electronics"
+  },
+  {
+    "id": "tx131",
+    "date": "01-02-2025",
+    "type": "expense",
+    "category": "Rent",
+    "amount": 3100,
+    "note": "February rent"
+  },
+  {
+    "id": "tx132",
+    "date": "10-02-2025",
+    "type": "income",
+    "category": "Salary",
+    "amount": 9880,
+    "note": "January salary"
+  },
+  {
+    "id": "tx133",
+    "date": "02-02-2025",
+    "type": "expense",
+    "category": "Food",
+    "amount": 74,
+    "note": "Groceries"
+  },
+  {
+    "id": "tx134",
+    "date": "04-02-2025",
+    "type": "expense",
+    "category": "Food",
+    "amount": 42,
+    "note": "Lunch at work"
+  },
+  {
+    "id": "tx135",
+    "date": "08-02-2025",
+    "type": "expense",
+    "category": "Transport",
+    "amount": 36,
+    "note": "Train"
+  },
+  {
+    "id": "tx136",
+    "date": "15-02-2025",
+    "type": "expense",
+    "category": "Transport",
+    "amount": 67,
+    "note": "Gas"
+  },
+  {
+    "id": "tx137",
+    "date": "19-02-2025",
+    "type": "expense",
+    "category": "Entertainment",
+    "amount": 92,
+    "note": "Streaming subscription"
+  },
+  {
+    "id": "tx138",
+    "date": "22-02-2025",
+    "type": "expense",
+    "category": "Entertainment",
+    "amount": 280,
+    "note": "Concert ticket"
+  },
+  {
+    "id": "tx139",
+    "date": "25-02-2025",
+    "type": "expense",
+    "category": "Other",
+    "amount": 95,
+    "note": "Pharmacy"
+  },
+  {
+    "id": "tx140",
+    "date": "27-02-2025",
+    "type": "expense",
+    "category": "Other",
+    "amount": 78,
+    "note": "Haircut"
+  },
+  {
+    "id": "tx141",
+    "date": "01-03-2025",
+    "type": "expense",
+    "category": "Rent",
+    "amount": 3100,
+    "note": "March rent"
+  },
+  {
+    "id": "tx142",
+    "date": "10-03-2025",
+    "type": "income",
+    "category": "Salary",
+    "amount": 9920,
+    "note": "February salary"
+  },
+  {
+    "id": "tx143",
+    "date": "02-03-2025",
+    "type": "expense",
+    "category": "Food",
+    "amount": 56,
+    "note": "Groceries"
+  },
+  {
+    "id": "tx144",
+    "date": "06-03-2025",
+    "type": "expense",
+    "category": "Food",
+    "amount": 29,
+    "note": "Coffee"
+  },
+  {
+    "id": "tx145",
+    "date": "08-03-2025",
+    "type": "expense",
+    "category": "Transport",
+    "amount": 54,
+    "note": "Taxi"
+  },
+  {
+    "id": "tx146",
+    "date": "14-03-2025",
+    "type": "expense",
+    "category": "Transport",
+    "amount": 19,
+    "note": "Bus"
+  },
+  {
+    "id": "tx147",
+    "date": "18-03-2025",
+    "type": "expense",
+    "category": "Entertainment",
+    "amount": 145,
+    "note": "Movie night"
+  },
+  {
+    "id": "tx148",
+    "date": "21-03-2025",
+    "type": "expense",
+    "category": "Entertainment",
+    "amount": 238,
+    "note": "Theater"
+  },
+  {
+    "id": "tx149",
+    "date": "25-03-2025",
+    "type": "expense",
+    "category": "Other",
+    "amount": 187,
+    "note": "Clothes"
+  },
+  {
+    "id": "tx150",
+    "date": "29-03-2025",
+    "type": "expense",
+    "category": "Other",
+    "amount": 131,
+    "note": "Phone bill"
+  },
+  {
+    "id": "tx151",
+    "date": "01-04-2025",
+    "type": "expense",
+    "category": "Rent",
+    "amount": 3100,
+    "note": "April rent"
+  },
+  {
+    "id": "tx152",
+    "date": "10-04-2025",
+    "type": "income",
+    "category": "Salary",
+    "amount": 9960,
+    "note": "March salary"
+  },
+  {
+    "id": "tx153",
+    "date": "02-04-2025",
+    "type": "expense",
+    "category": "Food",
+    "amount": 71,
+    "note": "Dinner out"
+  },
+  {
+    "id": "tx154",
+    "date": "06-04-2025",
+    "type": "expense",
+    "category": "Food",
+    "amount": 60,
+    "note": "Groceries"
+  },
+  {
+    "id": "tx155",
+    "date": "09-04-2025",
+    "type": "expense",
+    "category": "Transport",
+    "amount": 18,
+    "note": "Bus"
+  },
+  {
+    "id": "tx156",
+    "date": "14-04-2025",
+    "type": "expense",
+    "category": "Transport",
+    "amount": 79,
+    "note": "Gas"
+  },
+  {
+    "id": "tx157",
+    "date": "18-04-2025",
+    "type": "expense",
+    "category": "Entertainment",
+    "amount": 83,
+    "note": "Streaming subscription"
+  },
+  {
+    "id": "tx158",
+    "date": "21-04-2025",
+    "type": "expense",
+    "category": "Entertainment",
+    "amount": 209,
+    "note": "Bar night"
+  },
+  {
+    "id": "tx159",
+    "date": "25-04-2025",
+    "type": "expense",
+    "category": "Other",
+    "amount": 70,
+    "note": "Books"
+  },
+  {
+    "id": "tx160",
+    "date": "29-04-2025",
+    "type": "expense",
+    "category": "Other",
+    "amount": 220,
+    "note": "Electronics"
+  },
+  {
+    "id": "tx161",
+    "date": "01-05-2025",
+    "type": "expense",
+    "category": "Rent",
+    "amount": 3100,
+    "note": "May rent"
+  },
+  {
+    "id": "tx162",
+    "date": "10-05-2025",
+    "type": "income",
+    "category": "Salary",
+    "amount": 10000,
+    "note": "April salary"
+  },
+  {
+    "id": "tx163",
+    "date": "03-05-2025",
+    "type": "expense",
+    "category": "Food",
+    "amount": 80,
+    "note": "Groceries"
+  },
+  {
+    "id": "tx164",
+    "date": "06-05-2025",
+    "type": "expense",
+    "category": "Food",
+    "amount": 35,
+    "note": "Coffee"
+  },
+  {
+    "id": "tx165",
+    "date": "09-05-2025",
+    "type": "expense",
+    "category": "Transport",
+    "amount": 67,
+    "note": "Taxi"
+  },
+  {
+    "id": "tx166",
+    "date": "14-05-2025",
+    "type": "expense",
+    "category": "Transport",
+    "amount": 28,
+    "note": "Parking"
+  },
+  {
+    "id": "tx167",
+    "date": "18-05-2025",
+    "type": "expense",
+    "category": "Entertainment",
+    "amount": 256,
+    "note": "Concert ticket"
+  },
+  {
+    "id": "tx168",
+    "date": "21-05-2025",
+    "type": "expense",
+    "category": "Entertainment",
+    "amount": 153,
+    "note": "Movie night"
+  },
+  {
+    "id": "tx169",
+    "date": "25-05-2025",
+    "type": "expense",
+    "category": "Other",
+    "amount": 109,
+    "note": "Phone bill"
+  },
+  {
+    "id": "tx170",
+    "date": "29-05-2025",
+    "type": "expense",
+    "category": "Other",
+    "amount": 184,
+    "note": "Clothes"
+  },
+  {
+    "id": "tx171",
+    "date": "01-06-2025",
+    "type": "expense",
+    "category": "Rent",
+    "amount": 3100,
+    "note": "June rent"
+  },
+  {
+    "id": "tx172",
+    "date": "10-06-2025",
+    "type": "income",
+    "category": "Salary",
+    "amount": 10040,
+    "note": "May salary"
+  },
+  {
+    "id": "tx173",
+    "date": "02-06-2025",
+    "type": "expense",
+    "category": "Food",
+    "amount": 28,
+    "note": "Lunch at work"
+  },
+  {
+    "id": "tx174",
+    "date": "06-06-2025",
+    "type": "expense",
+    "category": "Food",
+    "amount": 58,
+    "note": "Groceries"
+  },
+  {
+    "id": "tx175",
+    "date": "09-06-2025",
+    "type": "expense",
+    "category": "Transport",
+    "amount": 21,
+    "note": "Bus"
+  },
+  {
+    "id": "tx176",
+    "date": "13-06-2025",
+    "type": "expense",
+    "category": "Transport",
+    "amount": 89,
+    "note": "Gas"
+  },
+  {
+    "id": "tx177",
+    "date": "18-06-2025",
+    "type": "expense",
+    "category": "Entertainment",
+    "amount": 180,
+    "note": "Theater"
+  },
+  {
+    "id": "tx178",
+    "date": "21-06-2025",
+    "type": "expense",
+    "category": "Entertainment",
+    "amount": 94,
+    "note": "Streaming subscription"
+  },
+  {
+    "id": "tx179",
+    "date": "24-06-2025",
+    "type": "expense",
+    "category": "Other",
+    "amount": 137,
+    "note": "Books"
+  },
+  {
+    "id": "tx180",
+    "date": "29-06-2025",
+    "type": "expense",
+    "category": "Other",
+    "amount": 160,
+    "note": "Clothes"
+  },
+  {
+    "id": "tx181",
+    "date": "01-07-2025",
+    "type": "expense",
+    "category": "Rent",
+    "amount": 3100,
+    "note": "July rent"
+  },
+  {
+    "id": "tx182",
+    "date": "10-07-2025",
+    "type": "income",
+    "category": "Salary",
+    "amount": 10080,
+    "note": "June salary"
+  },
+  {
+    "id": "tx183",
+    "date": "03-07-2025",
+    "type": "expense",
+    "category": "Food",
+    "amount": 59,
+    "note": "Groceries"
+  },
+  {
+    "id": "tx184",
+    "date": "06-07-2025",
+    "type": "expense",
+    "category": "Food",
+    "amount": 73,
+    "note": "Dinner out"
+  },
+  {
+    "id": "tx185",
+    "date": "09-07-2025",
+    "type": "expense",
+    "category": "Transport",
+    "amount": 26,
+    "note": "Train"
+  },
+  {
+    "id": "tx186",
+    "date": "14-07-2025",
+    "type": "expense",
+    "category": "Transport",
+    "amount": 64,
+    "note": "Gas"
+  },
+  {
+    "id": "tx187",
+    "date": "18-07-2025",
+    "type": "expense",
+    "category": "Entertainment",
+    "amount": 206,
+    "note": "Bar night"
+  },
+  {
+    "id": "tx188",
+    "date": "22-07-2025",
+    "type": "expense",
+    "category": "Entertainment",
+    "amount": 132,
+    "note": "Movie night"
+  },
+  {
+    "id": "tx189",
+    "date": "24-07-2025",
+    "type": "expense",
+    "category": "Other",
+    "amount": 233,
+    "note": "Electronics"
+  },
+  {
+    "id": "tx190",
+    "date": "29-07-2025",
+    "type": "expense",
+    "category": "Other",
+    "amount": 112,
+    "note": "Phone bill"
+  },
+  {
+    "id": "tx191",
+    "date": "01-08-2025",
+    "type": "expense",
+    "category": "Rent",
+    "amount": 3100,
+    "note": "August rent"
+  },
+  {
+    "id": "tx192",
+    "date": "10-08-2025",
+    "type": "income",
+    "category": "Salary",
+    "amount": 10120,
+    "note": "July salary"
+  },
+  {
+    "id": "tx193",
+    "date": "02-08-2025",
+    "type": "expense",
+    "category": "Food",
+    "amount": 70,
+    "note": "Groceries"
+  },
+  {
+    "id": "tx194",
+    "date": "06-08-2025",
+    "type": "expense",
+    "category": "Food",
+    "amount": 38,
+    "note": "Lunch at work"
+  },
+  {
+    "id": "tx195",
+    "date": "09-08-2025",
+    "type": "expense",
+    "category": "Transport",
+    "amount": 49,
+    "note": "Taxi"
+  },
+  {
+    "id": "tx196",
+    "date": "12-08-2025",
+    "type": "expense",
+    "category": "Transport",
+    "amount": 16,
+    "note": "Bus"
+  },
+  {
+    "id": "tx197",
+    "date": "18-08-2025",
+    "type": "expense",
+    "category": "Entertainment",
+    "amount": 222,
+    "note": "Concert ticket"
+  },
+  {
+    "id": "tx198",
+    "date": "21-08-2025",
+    "type": "expense",
+    "category": "Entertainment",
+    "amount": 93,
+    "note": "Streaming subscription"
+  },
+  {
+    "id": "tx199",
+    "date": "24-08-2025",
+    "type": "expense",
+    "category": "Other",
+    "amount": 67,
+    "note": "Haircut"
+  },
+  {
+    "id": "tx200",
+    "date": "29-08-2025",
+    "type": "expense",
+    "category": "Other",
+    "amount": 164,
+    "note": "Clothes"
+  },
+  {
+    "id": "tx201",
+    "date": "01-09-2025",
+    "type": "expense",
+    "category": "Rent",
+    "amount": 3100,
+    "note": "September rent"
+  },
+  {
+    "id": "tx202",
+    "date": "10-09-2025",
+    "type": "income",
+    "category": "Salary",
+    "amount": 10160,
+    "note": "August salary"
+  },
+  {
+    "id": "tx203",
+    "date": "03-09-2025",
+    "type": "expense",
+    "category": "Food",
+    "amount": 48,
+    "note": "Groceries"
+  },
+  {
+    "id": "tx204",
+    "date": "06-09-2025",
+    "type": "expense",
+    "category": "Food",
+    "amount": 27,
+    "note": "Coffee"
+  },
+  {
+    "id": "tx205",
+    "date": "09-09-2025",
+    "type": "expense",
+    "category": "Transport",
+    "amount": 17,
+    "note": "Bus"
+  },
+  {
+    "id": "tx206",
+    "date": "14-09-2025",
+    "type": "expense",
+    "category": "Transport",
+    "amount": 83,
+    "note": "Gas"
+  },
+  {
+    "id": "tx207",
+    "date": "18-09-2025",
+    "type": "expense",
+    "category": "Entertainment",
+    "amount": 142,
+    "note": "Movie night"
+  },
+  {
+    "id": "tx208",
+    "date": "21-09-2025",
+    "type": "expense",
+    "category": "Entertainment",
+    "amount": 201,
+    "note": "Theater"
+  },
+  {
+    "id": "tx209",
+    "date": "24-09-2025",
+    "type": "expense",
+    "category": "Other",
+    "amount": 111,
+    "note": "Books"
+  },
+  {
+    "id": "tx210",
+    "date": "29-09-2025",
+    "type": "expense",
+    "category": "Other",
+    "amount": 157,
+    "note": "Phone bill"
+  },
+  {
+    "id": "tx211",
+    "date": "01-10-2025",
+    "type": "expense",
+    "category": "Rent",
+    "amount": 3100,
+    "note": "October rent"
+  },
+  {
+    "id": "tx212",
+    "date": "10-10-2025",
+    "type": "income",
+    "category": "Salary",
+    "amount": 10200,
+    "note": "September salary"
+  },
+  {
+    "id": "tx213",
+    "date": "02-10-2025",
+    "type": "expense",
+    "category": "Food",
+    "amount": 42,
+    "note": "Groceries"
+  },
+  {
+    "id": "tx214",
+    "date": "06-10-2025",
+    "type": "expense",
+    "category": "Food",
+    "amount": 72,
+    "note": "Dinner out"
+  },
+  {
+    "id": "tx215",
+    "date": "09-10-2025",
+    "type": "expense",
+    "category": "Transport",
+    "amount": 25,
+    "note": "Bus"
+  },
+  {
+    "id": "tx216",
+    "date": "14-10-2025",
+    "type": "expense",
+    "category": "Transport",
+    "amount": 71,
+    "note": "Gas"
+  },
+  {
+    "id": "tx217",
+    "date": "18-10-2025",
+    "type": "expense",
+    "category": "Entertainment",
+    "amount": 187,
+    "note": "Theater"
+  },
+  {
+    "id": "tx218",
+    "date": "21-10-2025",
+    "type": "expense",
+    "category": "Entertainment",
+    "amount": 294,
+    "note": "Concert ticket"
+  },
+  {
+    "id": "tx219",
+    "date": "24-10-2025",
+    "type": "expense",
+    "category": "Other",
+    "amount": 146,
+    "note": "Clothes"
+  },
+  {
+    "id": "tx220",
+    "date": "29-10-2025",
+    "type": "expense",
+    "category": "Other",
+    "amount": 78,
+    "note": "Haircut"
+  },
+  {
+    "id": "tx221",
+    "date": "01-11-2025",
+    "type": "expense",
+    "category": "Rent",
+    "amount": 3100,
+    "note": "November rent"
+  },
+  {
+    "id": "tx222",
+    "date": "10-11-2025",
+    "type": "income",
+    "category": "Salary",
+    "amount": 10240,
+    "note": "October salary"
+  },
+  {
+    "id": "tx223",
+    "date": "03-11-2025",
+    "type": "expense",
+    "category": "Food",
+    "amount": 59,
+    "note": "Groceries"
+  },
+  {
+    "id": "tx224",
+    "date": "06-11-2025",
+    "type": "expense",
+    "category": "Food",
+    "amount": 45,
+    "note": "Pizza"
+  },
+  {
+    "id": "tx225",
+    "date": "09-11-2025",
+    "type": "expense",
+    "category": "Transport",
+    "amount": 53,
+    "note": "Taxi"
+  },
+  {
+    "id": "tx226",
+    "date": "12-11-2025",
+    "type": "expense",
+    "category": "Transport",
+    "amount": 20,
+    "note": "Bus"
+  },
+  {
+    "id": "tx227",
+    "date": "18-11-2025",
+    "type": "expense",
+    "category": "Entertainment",
+    "amount": 206,
+    "note": "Bar night"
+  },
+  {
+    "id": "tx228",
+    "date": "21-11-2025",
+    "type": "expense",
+    "category": "Entertainment",
+    "amount": 138,
+    "note": "Movie night"
+  },
+  {
+    "id": "tx229",
+    "date": "24-11-2025",
+    "type": "expense",
+    "category": "Other",
+    "amount": 87,
+    "note": "Pharmacy"
+  },
+  {
+    "id": "tx230",
+    "date": "29-11-2025",
+    "type": "expense",
+    "category": "Other",
+    "amount": 171,
+    "note": "Electronics"
+  },
+  {
+    "id": "tx231",
+    "date": "01-12-2025",
+    "type": "expense",
+    "category": "Rent",
+    "amount": 3100,
+    "note": "December rent"
+  },
+  {
+    "id": "tx232",
+    "date": "10-12-2025",
+    "type": "income",
+    "category": "Salary",
+    "amount": 10280,
+    "note": "November salary"
+  },
+  {
+    "id": "tx233",
+    "date": "02-12-2025",
+    "type": "expense",
+    "category": "Food",
+    "amount": 62,
+    "note": "Groceries"
+  },
+  {
+    "id": "tx234",
+    "date": "06-12-2025",
+    "type": "expense",
+    "category": "Food",
+    "amount": 35,
+    "note": "Coffee"
+  },
+  {
+    "id": "tx235",
+    "date": "09-12-2025",
+    "type": "expense",
+    "category": "Transport",
+    "amount": 27,
+    "note": "Train"
+  },
+  {
+    "id": "tx236",
+    "date": "14-12-2025",
+    "type": "expense",
+    "category": "Transport",
+    "amount": 69,
+    "note": "Gas"
+  },
+  {
+    "id": "tx237",
+    "date": "18-12-2025",
+    "type": "expense",
+    "category": "Entertainment",
+    "amount": 204,
+    "note": "Theater"
+  },
+  {
+    "id": "tx238",
+    "date": "21-12-2025",
+    "type": "expense",
+    "category": "Entertainment",
+    "amount": 93,
+    "note": "Streaming subscription"
+  },
+  {
+    "id": "tx239",
+    "date": "24-12-2025",
+    "type": "expense",
+    "category": "Other",
+    "amount": 207,
+    "note": "Gift"
+  },
+  {
+    "id": "tx240",
+    "date": "29-12-2025",
+    "type": "expense",
+    "category": "Other",
+    "amount": 52,
+    "note": "Books"
+  },
+  {
+    "id": "tx241",
+    "date": "01-01-2026",
+    "type": "expense",
+    "category": "Rent",
+    "amount": 3200,
+    "note": "January rent"
+  },
+  {
+    "id": "tx242",
+    "date": "10-01-2026",
+    "type": "income",
+    "category": "Salary",
+    "amount": 10000,
+    "note": "December salary"
+  },
+  {
+    "id": "tx243",
+    "date": "02-01-2026",
+    "type": "expense",
+    "category": "Food",
+    "amount": 61,
+    "note": "Groceries"
+  },
+  {
+    "id": "tx244",
+    "date": "06-01-2026",
+    "type": "expense",
+    "category": "Food",
+    "amount": 50,
+    "note": "Dinner out"
+  },
+  {
+    "id": "tx245",
+    "date": "09-01-2026",
+    "type": "expense",
+    "category": "Transport",
+    "amount": 57,
+    "note": "Taxi"
+  },
+  {
+    "id": "tx246",
+    "date": "14-01-2026",
+    "type": "expense",
+    "category": "Transport",
+    "amount": 20,
+    "note": "Bus"
+  },
+  {
+    "id": "tx247",
+    "date": "18-01-2026",
+    "type": "expense",
+    "category": "Entertainment",
+    "amount": 141,
+    "note": "Movie night"
+  },
+  {
+    "id": "tx248",
+    "date": "21-01-2026",
+    "type": "expense",
+    "category": "Entertainment",
+    "amount": 227,
+    "note": "Concert ticket"
+  },
+  {
+    "id": "tx249",
+    "date": "24-01-2026",
+    "type": "expense",
+    "category": "Other",
+    "amount": 112,
+    "note": "Phone bill"
+  },
+  {
+    "id": "tx250",
+    "date": "26-01-2026",
+    "type": "expense",
+    "category": "Other",
+    "amount": 71,
+    "note": "Electronics"
+  }
+]
