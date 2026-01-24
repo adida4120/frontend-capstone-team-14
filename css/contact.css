@@ -4,47 +4,85 @@
 
 /* Page layout */
 body.page-contact{
+    background: #f8fafc;
   padding: 1.6rem 0 2.6rem;
 }
 
 /*Card / Form */
 
+/* take the file to the center */
+body.page-contact .page--center{
+    min-height: calc(100vh - 180px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+ }
+/*body.page-contact form{
+  position: relative; *//* חובה בשביל הפס */
+ /* overflow: hidden;   /* חותך את הפס לפי הרדיוס */
+/*}*/
+
+    /* blue top accent */
+    /*body.page-contact form::before{
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 6px;
+  background-color: #2563eb;
+    } */
 body.page-contact form{
-    max-width: 32rem;
-    width: 95%;
-    padding: 1.5rem;
-    border-radius: 1rem;
+    max-width: 30rem;
+     width: 95%; /*זהה לשורה הראשונה - היא לא בחומר הנלמד */
+    padding: 1.4rem;
+    border-radius: 1.25rem;
     background: #fff;
     border: 1px solid #e2e8f0;
+    box-shadow: 0 10px 28px rgba(2, 6,23, 0.06);
+    /*ניתן לכתוב את SHADOW בצורה אחרת עם BORD*/
 }
 
 /*Fieldsets*/
-body.page-contact fieldset{
+.filedset-contact{
     border: 0;
     padding: 0;
-    margin-bottom: 1rem;
+    margin:0;
 }
 
 /*Titels*/
+/*filedest  אלמנט filedest שבא ישר אחרי אלמנט */
+body.page-contact fieldset {
+    margin-top: 1rem;
+}
 
-body.page-contact legend{
-    font-size: 1.75rem; 
-    margin-bottom: 0.6rem;
+#leg-contact{
+    font-size: 2rem; 
+    color: #1e293b;
+    margin-bottom: 0.75rem;
     font-weight: 800;
 }
 
 /* Intro text */
-body.page-contact.card--form p{
-    font-size: 0.95rem;
-    margin-bottom: 0.9rem;
-    color: #64748b;
+body.page-contact.card--form {
+    margin-bottom: 1.25rem;
 }
+
+
+
+body.page-contact .card--form p{
+     /* font-size: 0.95rem;*/
+    margin-bottom: 0.5rem; 
+    color: #64748b;
+    line-height: 1.5;
+}
+
 
 /* Fields */
 body.page-contact form > fieldset > div{
     display: grid;
-    gap: 0.5rem;
-    margin-bottom: 0.9rem;
+    gap: 0.4rem;
+    margin-bottom: 0.75rem;
 }
 
 /* Labels */
@@ -52,23 +90,34 @@ body.page-contact label{
     font-size: 0.75rem;
     letter-spacing: 0.12em;
     font-weight: 800;
+    text-transform: uppercase;
+    color: #14203b;
 }
 
 /* Inputs & textarea */
 body.page-contact input[type="text"],
 body.page-contact input[type="email"],
 body.page-contact textarea{
-    padding: 0.75em 0.9em;
-    font-size: 0.97rem;
-    border-radius: 0.75rem;
+    padding: 0.85rem 1rem;
+    font-size: 1rem;
+    border-radius: 0.9rem;
     border: 1px solid #e2e8f0;
+    outline: none;
+}
+
+body.page-contact input:focus,
+body.page-contact textarea:focus{
+    border-color: #2563eb;
+    box-shadow: 0 0 0 4px rgba(37, 99,235, 0.12);
 }
 
 body.page-contact textarea{
-    min-height: 8.5rem;
+    min-height:auto;
+    height: 4.5rem;
     resize: vertical;
 }
 
+/* Messages */
 body.page-contact .error{
     font-size: 0.8rem;
     min-height: 1.1rem;
@@ -76,24 +125,52 @@ body.page-contact .error{
 }
 
 body.page-contact .success{
-    margin-top: 0.9rem;
-    font-size: 0.9rem;
+    margin-top: 1rem;
+    font-size: 0.95rem;
     color: #059669;
 }
 
 /* Button */
 body.page-contact .btn{
-    padding: 0.75em 1em;
+    padding: 0.75rem 1rem;
     font-size: 1rem;
-    border-radius: 0.9em;
+    border-radius: 0.95rem;
+}
+.btn{
+  border: none;
+  cursor: pointer;
 }
 
-@media(max-width: 520px){
+.btn--primary{
+  background: #2563eb;
+  color: #fff;
+}
+
+.btn--full{
+  width: 100%;
+}
+
+@media(max-width: 768px){
+      body.page-contact .page--center{
+    align-items: flex-start;   
+    margin-top: 3rem;       
+    min-height: auto;
+  }
     body.page-contact form{
-        padding: 1.2rem;
+        padding:1.1rem;
+        width: 90%;
     }
-}
 
-body.page-contact legend{
-    font-size: 1.5rem;
+    body.page-contact legend{
+        font-size: 1.4rem;
+    }
+
+     body.page-contact label{
+        font-size: 0.85rem;
+        margin-top: 0.5rem;
+    }
+
+    body.page-contact textarea{
+        min-height: 7rem;
+    }
 }

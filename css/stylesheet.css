@@ -187,6 +187,7 @@ body.page-loaded {
         top: 0;
         z-index: 2000;
     }
+    
     .main-nav{
         display: none;
         position: fixed;
