@@ -1,0 +1,99 @@
+/* =========================
+   CONTACT PAGE 
+   ========================= */
+
+/* Page layout */
+body.page-contact{
+  padding: 1.6rem 0 2.6rem;
+}
+
+/*Card / Form */
+
+body.page-contact form{
+    max-width: 32rem;
+    width: 95%;
+    padding: 1.5rem;
+    border-radius: 1rem;
+    background: #fff;
+    border: 1px solid #e2e8f0;
+}
+
+/*Fieldsets*/
+body.page-contact fieldset{
+    border: 0;
+    padding: 0;
+    margin-bottom: 1rem;
+}
+
+/*Titels*/
+
+body.page-contact legend{
+    font-size: 1.75rem; 
+    margin-bottom: 0.6rem;
+    font-weight: 800;
+}
+
+/* Intro text */
+body.page-contact.card--form p{
+    font-size: 0.95rem;
+    margin-bottom: 0.9rem;
+    color: #64748b;
+}
+
+/* Fields */
+body.page-contact form > fieldset > div{
+    display: grid;
+    gap: 0.5rem;
+    margin-bottom: 0.9rem;
+}
+
+/* Labels */
+body.page-contact label{
+    font-size: 0.75rem;
+    letter-spacing: 0.12em;
+    font-weight: 800;
+}
+
+/* Inputs & textarea */
+body.page-contact input[type="text"],
+body.page-contact input[type="email"],
+body.page-contact textarea{
+    padding: 0.75em 0.9em;
+    font-size: 0.97rem;
+    border-radius: 0.75rem;
+    border: 1px solid #e2e8f0;
+}
+
+body.page-contact textarea{
+    min-height: 8.5rem;
+    resize: vertical;
+}
+
+body.page-contact .error{
+    font-size: 0.8rem;
+    min-height: 1.1rem;
+    color: #dc2626;
+}
+
+body.page-contact .success{
+    margin-top: 0.9rem;
+    font-size: 0.9rem;
+    color: #059669;
+}
+
+/* Button */
+body.page-contact .btn{
+    padding: 0.75em 1em;
+    font-size: 1rem;
+    border-radius: 0.9em;
+}
+
+@media(max-width: 520px){
+    body.page-contact form{
+        padding: 1.2rem;
+    }
+}
+
+body.page-contact legend{
+    font-size: 1.5rem;
+}
