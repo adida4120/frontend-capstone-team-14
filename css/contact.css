@@ -17,28 +17,29 @@ body.page-contact .page--center{
     justify-content: center;
     align-items: center;
  }
-/*body.page-contact form{
-  position: relative; *//* חובה בשביל הפס */
- /* overflow: hidden;   /* חותך את הפס לפי הרדיוס */
-/*}*/
+body.page-contact form{
+  position: relative; /* חובה בשביל הפס */
+  overflow: hidden;   /* חותך את הפס לפי הרדיוס */
+}
 
     /* blue top accent */
-    /*body.page-contact form::before{
+body.page-contact form::before{
   content: "";
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
-  height: 6px;
+  height: 5px;
   background-color: #2563eb;
-    } */
+    } 
 body.page-contact form{
+    margin-top: 5rem;
     max-width: 30rem;
     padding: 1.4rem;
     border-radius: 1.25rem;
     background: #fff;
     border: 1px solid #e2e8f0;
-    box-shadow: 0 10px 28px rgba(2, 6,23, 0.06);
+    box-shadow: 0 10px 28px rgba(6, 16, 60, 0.06);
     /*ניתן לכתוב את SHADOW בצורה אחרת עם BORD*/
 }
 
@@ -147,6 +148,8 @@ body.page-contact .btn{
 
 .btn--full{
   width: 100%;
+  font-weight:700;
+
 }
 
 @media(max-width: 768px){
