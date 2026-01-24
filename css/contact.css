@@ -34,7 +34,6 @@ body.page-contact .page--center{
     } */
 body.page-contact form{
     max-width: 30rem;
-     width: 95%; /*זהה לשורה הראשונה - היא לא בחומר הנלמד */
     padding: 1.4rem;
     border-radius: 1.25rem;
     background: #fff;
