@@ -5,20 +5,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="../css/stylesheet.css">
+    <link rel="stylesheet" href="../css/expense-history.css">
 </head>
 
 <body>
-<header class="main-header">
+ <header class="main-header">
         <div class="container header-container">
             <div class="logo-group">
-                <img class="moneybuddy-logo" src="/frontend-capstone-team-14/images/MoneyBuddy_Logo.jpg"
+                <img class="moneybuddy-logo"
+                    src="https://github.com/adida4120/frontend-capstone-team-14/blob/feature-layout/images/MoneyBuddy_Logo.jpg?raw=true"
                     alt="money buddy logo">
                 <h1 id="home-title" class="main-title">Money Buddy</h1>
             </div>
+            <button class="menu-toggle" aria-label="Toggle Menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </button>
             <nav class="main-nav">
                 <a href="index.html" class="nav-link">Home</a>
                 <a href="transaction.html" class="nav-link">Transaction</a>
-                <a href="expense-history.html" class="nav-link">History</a>
+                <a href="expense-history.html" class="nav-link active">History</a>
                 <a href="dashbord-planner.html" class="nav-link">Dashbord</a>
                 <a href="about.html" class="nav-link">About</a>
                 <a href="contact.html" class="nav-link">Contact</a>
@@ -27,12 +34,12 @@
     </header>
  
     
- <main class="container page">
-        <div class="page-head">
-          <h2 class="history-main-title section-title ">Transaction History</h2>
+ <main class="container page history-page">
+        <div class="page-head history-head">
+          <h2 class="history-title section-title ">Transaction History</h2>
 
 
-          <button id="exportBtn" class="btn bnt--success" type="button">
+          <button id="exportBtn" class="btn btn--success" type="button">
             <span aria-hidden="true">⬇</span>
             Export Records
           </button>
@@ -40,19 +47,19 @@
 
 
         <!-- Filters panel -->
-        <section class="card card--panel" aria-label="History filters">
-            <div class="filter-filed">
+        <section class="card card--panel history-filters" aria-label="History filters">
+            <div class="filters-row">
                  <!-- search -->
-                 <div class="filed">
-                    <label class="label" for="searchInput">Search</label>
+                 <div class="filter-group filter-group--search">
+                    <label class="label filter-label" for="searchInput">Search</label>
                     <div class="input-with-icon">
                         <span class="input-icon" aria-hidden="true">🔎</span>
                         <input id="searchInput" class="input" type="text" placeholder="Filter anything" autocomplete="off"/>
                     </div>
                  </div>
               <!-- Filter mode -->
-               <div class="filter-filed">
-                <label for="filterMode">Filter mode</label>
+               <div class="filter-group filter-group--mode">
+                <label class="filter-label" for="filterMode">Filter mode</label>
                 <select name="filter-Mode" id="filterMode" class="input">
                     <option value="all">All Time</option>
                     <option value="daily">Daily</option>
@@ -61,13 +68,13 @@
                     <option value="range">Range</option>
                 </select>
                </div>
-                   <!-- Range pickers (מופיע רק כש-range) -->
-                <div id="rangeWrap" class="range hidden" aria-label="Date range">
-                    <div class="filter-filed">
-                        <label class="label" for="fromDate">From</label>
+                   <!-- Range pickers -->
+                <div id="rangeWrap" class="range-fields hidden" aria-label="Date range">
+                    <div class="filter-group filter-group--date">
+                        <label class="label filter-label" for="fromDate">From</label>
                         <input id="fromDate" class="input" type="date"/>
                     </div>
-                    <div class="filter-filed">
+                    <div class="filter-Date-field">
                         <label class="label" for="toDate">To</label>
                         <input id="toDate" class="input" type="date"/>
                     </div>
@@ -75,7 +82,7 @@
 
 
                 <!-- clear -->
-                <div class="filter-filed clear-actions">
+                <div class="filter-actions">
                     <button id="clearBtn" class="btn btn--ghost" type="button">
                         <span aria-hidden="true">↻</span>
                         Clear
@@ -86,23 +93,31 @@
 
 
         <!-- List -->
-        <section class="list" aria-label="Transaction list">
-            <div id="emptyState" class="list" role="status">
+        <section class="history-list" aria-label="Transaction list">
+            <div id="emptyState" class="list empty-state" role="status">
                 No transaction match your filters.
             </div>
 
-            <ul id="txList" class="tx-list" aria-live="polite"></ul>
+            <ul id="txList" class="tx-list" aria-live="polite">
+                <li class="tx-item">
+                <div class="tx-icon" aria-hidden="true"></div>
+
+                <div class="tx-text">
+                    <div class="tx-title"></div>
+                    <div class="tx-sub"></div>
+                </div>
+
+                 <div class="tx-amount"></div>
+
+  <button class="tx-delete" type="button" aria-label="Delete transaction"></button>
+</li>
+  
+            </ul>
         </section>
     </main>
 
-                 
-    <footer class="site-footer">
-        <div class="container">
-            <small>©<span id="yaer"></span>MoneyBuddy</small>
-        </div>
-    </footer>
-
-    <script src="../js/transition.js"></script>
+  
+    <script src="../js/common.js"></script>
     <script src="../js/history.js"></script>
 </body>
 </html>
