@@ -239,10 +239,11 @@ body.page-loaded {
   border-radius: 0.9rem;
 }
 
-.btn:focus{
-  outline: 3px solid #3b82f6;
-  outline-offset: 3px;
+.btn:focus, input:focus, select:focus, textarea:focus{
+   outline: 3px solid #93c5fd;
+    outline-offset: 2px;
 }
+
 
 .btn--success{
   background: #059669;

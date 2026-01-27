@@ -1,165 +1,558 @@
-document.addEventListener('DOMContentLoaded', function(){
-   console.log('history.js loaded');
+document.addEventListener("DOMContentLoaded", function () {
+  console.log("history.js loaded");
 
-   const listEl =document.querySelector("#txList");
-   const emptyState = document.querySelector("#emptyState");
-   
+  /* ========= DOM ========= */
+  const txList = document.getElementById("txList");
+  const emptyState = document.getElementById("emptyState");
+  const resultsCount = document.getElementById("resultsCount");
 
-   console.log('listEl:', listEl);
-  console.log('emptyState:', emptyState);
+  const searchInput = document.getElementById("searchInput");
+  const filterMode = document.getElementById("filterMode");
+  const modeInputs = document.getElementById("modeInputs");
+  const monthSelect = document.getElementById("monthSelect");
+  const exportBtn = document.getElementById("exportBtn");
 
-   let transactions =[];
+  if (!txList || !emptyState || !resultsCount) {
+    console.error("Missing required HTML elements");
+    return;
+  }
 
-   fetch ("../data/data.json")
-     .then(function (response){
-      return response.json();
-     })
-     .then(function(data){
-      transactions = data;
-      renderList(transactions);
-     })
+  /* ========= DATA ========= */
+  let transactions = [];
+  let filtered = [];
 
-     .catch(function(error){
-      console.error("Error loading data", error)
-     });
+  fetch("../data/data.json")
+    .then(function (res) { return res.json(); })
+    .then(function (data) {
+      transactions = data || [];
+      initMonthSelect(transactions);
+      buildModeInputs("all", transactions);
+      applyFilters(); // first render
+    })
+    .catch(function (err) {
+      console.error("Error loading data", err);
+    });
 
-   function rederList(items){
-      listEl.innerHTML=" ";
+  /* ========= EVENTS ========= */
+  if (searchInput) searchInput.addEventListener("input", applyFilters);
+  if (monthSelect) monthSelect.addEventListener("change", applyFilters);
 
-      if (!items|| items.length == 0 ){
-         emptyState.classList.remove("hidden");
-         return;
+  if (filterMode) {
+    filterMode.addEventListener("change", function () {
+      buildModeInputs(filterMode.value, transactions);
+      applyFilters();
+    });
+  }
+
+  if (modeInputs) {
+    modeInputs.addEventListener("change", applyFilters);
+    modeInputs.addEventListener("input", applyFilters);
+  }
+
+  if (exportBtn) {
+    exportBtn.addEventListener("click", function () {
+      exportFilteredToCSV(filtered);
+    });
+  }
+
+  /* ========= FILTERING ========= */
+  function applyFilters() {
+    const q = (searchInput && searchInput.value ? searchInput.value : "").toLowerCase().trim();
+    const monthVal = monthSelect ? monthSelect.value : "all";
+    const mode = filterMode ? filterMode.value : "all";
+
+    // Start from full list
+    let items = transactions.slice();
+
+    // Search (category or note)
+    if (q) {
+      items = items.filter(function (tx) {
+        const cat = (tx.category || "").toLowerCase();
+        const note = (tx.note || "").toLowerCase();
+        return cat.indexOf(q) !== -1 || note.indexOf(q) !== -1;
+      });
+    }
+
+    // Month select (quick filter)
+    if (monthVal && monthVal !== "all") {
+      items = items.filter(function (tx) {
+        const iso = toISODate(tx.date); // yyyy-mm-dd
+        if (!iso) return false;
+        return iso.substring(0, 7) === monthVal; // yyyy-mm
+      });
+    }
+
+    // Mode filters
+    items = applyModeFilter(items, mode);
+
+    // Sort by date DESC
+    items.sort(function (a, b) {
+      return parseDMY(b.date) - parseDMY(a.date);
+    });
+
+    filtered = items;
+
+    renderList(filtered);
+    updateSummary(filtered);
+  }
+
+  function applyModeFilter(items, mode) {
+    if (!mode || mode === "all") return items;
+
+    // Read dynamic inputs
+    const dailyDate = document.getElementById("dailyDate");
+    const monthlyMonth = document.getElementById("monthlyMonth");
+    const yearlyYear = document.getElementById("yearlyYear");
+    const fromDate = document.getElementById("fromDate");
+    const toDate = document.getElementById("toDate");
+
+    if (mode === "daily" && dailyDate && dailyDate.value) {
+      const target = dailyDate.value; // yyyy-mm-dd
+      return items.filter(function (tx) {
+        return toISODate(tx.date) === target;
+      });
+    }
+
+    if (mode === "monthly" && monthlyMonth && monthlyMonth.value) {
+      const targetMonth = monthlyMonth.value; // yyyy-mm
+      return items.filter(function (tx) {
+        const iso = toISODate(tx.date);
+        return iso && iso.substring(0, 7) === targetMonth;
+      });
+    }
+
+    if (mode === "yearly" && yearlyYear && yearlyYear.value) {
+      const y = yearlyYear.value; // yyyy
+      return items.filter(function (tx) {
+        const iso = toISODate(tx.date);
+        return iso && iso.substring(0, 4) === y;
+      });
+    }
+
+    if (mode === "range" && fromDate && toDate && fromDate.value && toDate.value) {
+      const from = new Date(fromDate.value + "T00:00:00");
+      const to = new Date(toDate.value + "T23:59:59");
+
+      return items.filter(function (tx) {
+        const iso = toISODate(tx.date);
+        if (!iso) return false;
+        const d = new Date(iso + "T00:00:00");
+        return d >= from && d <= to;
+      });
+    }
+
+    return items;
+  }
+
+  /* ========= DYNAMIC INPUTS UI ========= */
+  function buildModeInputs(mode, allItems) {
+    if (!modeInputs) return;
+    modeInputs.innerHTML = "";
+
+    // Helper: create a field wrapper
+    function field(labelText, inputEl) {
+      const wrap = document.createElement("div");
+      wrap.className = "filter-field";
+
+      const lab = document.createElement("label");
+      lab.textContent = labelText;
+
+      wrap.appendChild(lab);
+      wrap.appendChild(inputEl);
+      return wrap;
+    }
+
+    if (mode === "daily") {
+      const inp = document.createElement("input");
+      inp.type = "date";
+      inp.id = "dailyDate";
+      inp.className = "input";
+      modeInputs.appendChild(field("Day", inp));
+    }
+
+    if (mode === "monthly") {
+      const inp = document.createElement("input");
+      inp.type = "month";
+      inp.id = "monthlyMonth";
+      inp.className = "input";
+      modeInputs.appendChild(field("Month", inp));
+    }
+
+    if (mode === "yearly") {
+      const sel = document.createElement("select");
+      sel.id = "yearlyYear";
+      sel.className = "input";
+
+      const optAll = document.createElement("option");
+      optAll.value = "";
+      optAll.textContent = "Choose year";
+      sel.appendChild(optAll);
+
+      const years = extractYears(allItems);
+      for (let i = 0; i < years.length; i++) {
+        const o = document.createElement("option");
+        o.value = years[i];
+        o.textContent = years[i];
+        sel.appendChild(o);
       }
 
-      emptyState.classList.add("hidden");
+      modeInputs.appendChild(field("Year", sel));
+    }
 
-      items.forEach(function (tx){
-         const li = document.createElement("li");
-         li.className = "tx-item";
-         li.innerHTML = `
-            <div class="tx-main">
-               <div class="tx-info">
-                  <p class="tx-title">${tx.category}</p>
-                  <p class="tx-date">${tx.date}</p>
-                  <p class="tx-note">${tx.note}</p>
-               </div>
+    if (mode === "range") {
+      const from = document.createElement("input");
+      from.type = "date";
+      from.id = "fromDate";
+      from.className = "input";
 
-            <div class="tx-amount ${tx.type === 'income' ? 'income' : 'expense'}">
-               ${tx.type === 'income' ? '+' : '-'}₪${tx.amount}
-            </div>
-         </div>
-         `;
-         listEl.appendChild(li);
-      
-      });
-   }
+      const to = document.createElement("input");
+      to.type = "date";
+      to.id = "toDate";
+      to.className = "input";
+
+      modeInputs.appendChild(field("From", from));
+      modeInputs.appendChild(field("To", to));
+    }
+  }
+
+  function extractYears(items) {
+    const set = {};
+    for (let i = 0; i < items.length; i++) {
+      const iso = toISODate(items[i].date);
+      if (!iso) continue;
+      const y = iso.substring(0, 4);
+      set[y] = true;
+    }
+    const years = Object.keys(set);
+    years.sort(function (a, b) { return Number(b) - Number(a); });
+    return years;
+  }
+
+  /* ========= MONTH SELECT ========= */
+  function initMonthSelect(items) {
+    if (!monthSelect) return;
+
+    // keep "All"
+    monthSelect.innerHTML = "";
+    const allOpt = document.createElement("option");
+    allOpt.value = "all";
+    allOpt.textContent = "All";
+    monthSelect.appendChild(allOpt);
+
+    const set = {};
+    for (let i = 0; i < items.length; i++) {
+      const iso = toISODate(items[i].date);
+      if (!iso) continue;
+      const ym = iso.substring(0, 7);
+      set[ym] = true;
+    }
+
+    const months = Object.keys(set);
+    months.sort(); // ascending yyyy-mm
+
+    for (let j = 0; j < months.length; j++) {
+      const o = document.createElement("option");
+      o.value = months[j];
+      o.textContent = months[j];
+      monthSelect.appendChild(o);
+    }
+  }
+
+  /* ========= RENDER ========= */
+  function renderList(items) {
+    txList.innerHTML = "";
+
+    if (!items || items.length === 0) {
+      emptyState.classList.remove("hidden");
+      return;
+    }
+    emptyState.classList.add("hidden");
+
+    for (let i = 0; i < items.length; i++) {
+      const tx = items[i];
+      txList.appendChild(createTxItem(tx));
+    }
+  }
+
+  function createTxItem(tx) {
+    const isIncome = tx.type === "income";
+
+    const li = document.createElement("li");
+    li.className = "tx-item " + (isIncome ? "tx--income" : "tx--expense");
+
+    // icon
+    const icon = document.createElement("div");
+    icon.className = "tx-icon";
+    icon.setAttribute("aria-hidden", "true");
+    icon.textContent = isIncome ? "↗" : "↘";
+
+    // text
+    const text = document.createElement("div");
+    const title = document.createElement("div");
+    title.className = "tx-title";
+    title.textContent = tx.note ? tx.note : tx.category;
+
+    const sub = document.createElement("div");
+    sub.className = "tx-sub";
+    sub.textContent = (tx.date || "") + " • " + (tx.category || "");
+
+    text.appendChild(title);
+    text.appendChild(sub);
+
+    // amount
+    const amount = document.createElement("div");
+    amount.className = "tx-amount";
+    amount.textContent = (isIncome ? "+ ₪" : "- ₪") + Number(tx.amount || 0).toLocaleString();
+
+    // delete (optional UI only)
+    const delBtn = document.createElement("button");
+    delBtn.className = "tx-delete";
+    delBtn.type = "button";
+    delBtn.setAttribute("aria-label", "Delete transaction");
+    delBtn.textContent = "🗑️";
+
+    delBtn.addEventListener("click", function () {
+      li.remove();
+      // Note: this removes only from UI, not from JSON
+      if (txList.children.length === 0) emptyState.classList.remove("hidden");
+      resultsCount.textContent = txList.children.length;
+    });
+
+    li.appendChild(icon);
+    li.appendChild(text);
+    li.appendChild(amount);
+    li.appendChild(delBtn);
+    return li;
+  }
+
+  function updateSummary(items) {
+    resultsCount.textContent = items.length;
+  }
+
+  /* ========= CSV EXPORT ========= */
+  function exportFilteredToCSV(items) {
+    if (!items || items.length === 0) {
+      alert("Nothing to export.");
+      return;
+    }
+
+    // Header
+    let csv = "id,date,type,category,amount,note\n";
+
+    for (let i = 0; i < items.length; i++) {
+      const t = items[i];
+      const note = t.note ? String(t.note) : "";
+      csv +=
+        safeCSV(t.id) + "," +
+        safeCSV(t.date) + "," +
+        safeCSV(t.type) + "," +
+        safeCSV(t.category) + "," +
+        safeCSV(t.amount) + "," +
+        safeCSV(note) + "\n";
+    }
+
+    const blob = new Blob([csv], { type: "text/csv;charset=utf-8;" });
+    const url = URL.createObjectURL(blob);
+
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = "MoneyBuddy_Export.csv";
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+
+    URL.revokeObjectURL(url);
+  }
+
+  function safeCSV(val) {
+    // Wrap in quotes and escape quotes
+    const s = (val === null || val === undefined) ? "" : String(val);
+    return '"' + s.replace(/"/g, '""') + '"';
+  }
+
+  /* ========= DATE HELPERS ========= */
+  function parseDMY(dmy) {
+    // dd-mm-yyyy
+    if (!dmy) return new Date(0);
+    const parts = dmy.split("-");
+    return new Date(Number(parts[2]), Number(parts[1]) - 1, Number(parts[0]));
+  }
+
+  function toISODate(dmy) {
+    // dd-mm-yyyy -> yyyy-mm-dd
+    if (!dmy) return "";
+    const parts = dmy.split("-");
+    if (parts.length !== 3) return "";
+    const dd = parts[0].padStart(2, "0");
+    const mm = parts[1].padStart(2, "0");
+    const yy = parts[2];
+    return yy + "-" + mm + "-" + dd;
+  }
 });
 
 
 
+// document.addEventListener('DOMContentLoaded', function(){
+//    console.log('history.js loaded');
+   
+//      /* ========= DOM ELEMENTS ========= */
+//    const listEl =document.querySelector("#txList");
+//    const emptyState = document.querySelector("#emptyState");
+   
+
+//    const resultsCount = document.getElementById('resultsCount');
+   
+
+//    if(!listEl || !emptyState){
+//       console.error("Missing required HTML elements (txList / emptyState)");
+//       return;
+//    }
+
+//      /* ========= DATA ========= */
+   
+//    let transactions = [];
+
+//    fetch ('../data/data.json')
+//      .then(function (response){
+//       return response.json();
+//      })
+//      .then(function(data){
+//       transactions = data ;
+//       renderList(transactions);
+//       updateSummary(transactions);
+//       })
+
+//      .catch(function(error){
+//       console.error("Error loading data", error)
+//      });
+
+
+//   /* ========= FUNCTIONS ========= */
+//    function renderList(items){
+//       listEl.innerHTML=" ";
+
+//       if (!items|| items.length === 0 ){
+//          emptyState.classList.remove("hidden");
+//          return;
+//       }
+
+//       emptyState.classList.add("hidden");
+
+//       const sortedItems = items.slice().sort(function (a, b) {
+//       return parseDate(b.date) - parseDate(a.date);
+//       });
+
+//        // Create list items
+   
+
+//       for (let i = 0; i < sortedItems.length; i++){
+//          const tx = sortedItems[i];
+//          const isIncome = tx.type === "income";
+
+//          const li = document.createElement("li");
+//          li.className = "tx-item " + (isIncome ? "tx--income" : "tx--expense");
+//          li.dataset.id = tx.id;
+
+//          const icon = document.createElement("div");
+//          icon.className = "tx-icon";
+//          icon.setAttribute("aria-hidden", "true");
+//          icon.textContent = isIncome ? "↗" : "↘";
+//          const text = document.createElement("div");
+
+//          const title = document.createElement("div");
+//          title.className = "tx-title";
+//          title.textContent = tx.note ? tx.note : tx.category;
+
+//          const sub = document.createElement("div");
+//          sub.className = "tx-sub";
+//          sub.textContent = tx.date + " • " + tx.category;
+
+//          text.appendChild(title);
+//          text.appendChild(sub);
+//          const amount = document.createElement("div");
+//          amount.className = "tx-amount";
+//          amount.textContent = (isIncome ? "+ ₪" : "- ₪") + Number(tx.amount).toLocaleString();
+
+//          const delBtn = document.createElement("button");
+//          delBtn.className = "tx-delete";
+//          delBtn.type = "button";
+//          delBtn.setAttribute("aria-label", "Delete transaction");
+//          delBtn.textContent = "🗑️";
+
+//          li.appendChild(icon);
+//          li.appendChild(text);
+//          li.appendChild(amount);
+//          li.appendChild(delBtn);
+
+//          listEl.appendChild(li);
+//       }
 
 
 
 
 
+//       // for (let i = 0; i < sortedItems.length; i++) {
+//       // const tx = sortedItems[i];
+//       // const li = document.createElement('li');
+//       // li.className = 'tx-item';
+//       // /* Determine sign based on transaction type */
+//       // let sign = '-';
+//       // if (tx.type === 'income') {
+//       //   sign = '+';
+//       // }
+
+//       //  /* Handle optional note */
+//       // let noteText = '';
+//       // if (tx.note) {
+//       //   noteText = tx.note;
+//       // }
+
+//       /* Build HTML using classic string concatenation */
+//       // li.innerHTML =
+//       //   '<div class="tx-main">' +
+//       //     '<div class="tx-category">' + tx.category + '</div>' +
+//       //     '<div class="tx-meta">' + tx.date + ' • ' + noteText + '</div>' +
+//       //   '</div>' +
+//       //   '<div class="tx-amount ' + tx.type + '">' +
+//       //     sign + Number(tx.amount).toLocaleString() +
+//       //   '</div>';
+
+//       //  listEl.appendChild(li);
+//       //  }
+//    }
+
+//      /* ========= UPDATE SUMMARY VALUES ========= */
+//    function updateSummary(items) {
+//        if (!resultsCount) return;
+//          resultsCount.textContent = items.length;
+//    }
+
+   
+//   /* ========= PARSE DATE FROM dd-mm-yyyy FORMAT ========= */
+//   function parseDate(dateStr) {
+//     const parts = dateStr.split('-');
+//     return new Date(parts[2], parts[1] - 1, parts[0]);
+//   }
+
+// })
+// ;
+
+// // exportToCSV(){
+// //                 const filters = app.getHistoryFilters();
+// //                 const results = engine.getFilteredData(filters);
+// //                 if (results.length === 0) { alert('Nothing to export.'); return; }
+// //                 let csv = "ID,Title,Amount,Type,Category,Date,Note\n";
+// //                 results.forEach(item => {
+// //                     csv += `${item.id},"${item.title.replace(/"/g, '""')}",${item.amount},${item.type},${item.category},${item.date},"${(item.note || "").replace(/"/g, '""')}"\n`;
+// //                 });
+// //                 const link = document.createElement("a");
+// //                 link.setAttribute("href", encodeURI("data:text/csv;charset=utf-8," + csv));
+// //                 link.setAttribute("download", `MoneyBuddy_Export_${new Date().toISOString().split('T')[0]}.csv`);
+// //                 document.body.appendChild(link);
+// //                 link.click();
+// //                 document.body.removeChild(link);
+// //                }
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-// /* ==========
-//    CONFIG
-// ========== */
-// const STORAGE_KEY = "transactions";
-
-// /* ==========
-//    SEED
-// ========== */
-// const seedTransactions = [
-//     {id: "txt1", date: "05-01-2026", type: "expense", category: "Food", amount: 45, note:"Pizza"},
-//     {id: "txt2", date: "10-01-2026", type: "icome", category: "Salary", amount: 10000, note:"December salery"},
-//     { id: "tx3", date: "2026-01-12", type: "expense", category: "Transport", amount: 18, note: "Bus" },
-//     { id: "tx4", date: "2026-01-19", type: "expense", category: "Shopping", amount: 210, note: "Skincare" }
-// ];
-// /* ==========
-//    DOM
-// ========== */
-// const exportBtn = document.getElementById("exportBtn");
-// const clearBtn = document.getElementById("clearBtn");
-// const searchInput = document.getElementById("searchInput");
-// const filterMode = document.getElementById("filterMode");
-
-// const rangeWrap = document.getElementById("rangeWrap");
-// const fromDate = document.getElementById("fromDate");
-// const toDate = document.getElementById("toDate");
-
-
-// const yearSpan = document.getElementById("yaer");
-
-// /* ==========
-//    STATE
-// ========== */
-// let allTx = [];
-// let filteredTx = [];
-
-// /* ==========
-//    INIT
-// ========== */
-
-// init();
-
-// function init(){
-//     setYear();
-//     ensureSeed();
-//     allTx = loadTransactions();
-//     bindEvents();
-//     toggleRangeUI();
-//     applyFiltersAndRender();
-
-
-// }
-
-// /* ==========
-//    COMMON - take to COMMON.JS
-// ========== */
-// function setYear(){
-//     if (!localStorage.getItem(STORAGE_KEY)){
-//         localStorage.setItem(STORAGE_KEY,JASON.stringify(seedTransactions));
-//     }
-// }
-
-// function ensureSeed() {}
-
-// /* ==========
-//    STORAGE
-// ========== */
-
-
-// /* ==========
-//    EVENTS
-// ========== */
-
-
-
-
-// /* ==========
-//    EXPORT CSV
-// ========== */
-
-
-
-// /* =================
-//    NEW TRANSACTION
-// ====================*/
 

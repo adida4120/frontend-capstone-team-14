@@ -7,6 +7,8 @@
     <title>History</title>
     <link rel="stylesheet" href="../css/stylesheet.css">
     <link rel="stylesheet" href="../css/expense-history.css">
+    <!-- Google Fonts: Sans-serif (Lesson 7: Modern/Clean) -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
 </head>
 
 <body>
@@ -34,35 +36,26 @@
         </div>
     </header>
     <!-- ============================================================================================================================= -->
-
-    <main class="container history-page">
+    <main class="history-page">
         <div class="history-head">
-            <h1 class="history-title section-title">Transaction History</h1>
+            <h1 class="history-title">Transaction History</h1>
 
             <button id="exportBtn" class="btn btn--success" type="button">
-                <span aria-hidden="true">⬇</span>
-                Export Records CSV
+                Export CSV
             </button>
         </div>
 
-    
-        <!-- Filters panel -->
         <section class="card card--panel history-filters" aria-label="History filters">
-            <div class="filters-grid">
-                <!-- Search -->
-                <div class="filter-field filter-group--search">
-                    <label class="label filter-label" for="searchInput">Search</label>
-                    <div class="input-with-icon">
-                        <span class="input-icon" aria-hidden="true">🔎</span>
-                        <input id="searchInput" class="input" type="text" placeholder="Search by category or note"
-                            autocomplete="off">
-                    </div>
+            <div class="filter-group">
+                <div class="filter-field">
+                    <label for="searchInput">Search</label>
+                    <input id="searchInput" type="text" placeholder="Search by category or note..." />
                 </div>
 
                 <!-- Filter mode -->
                 <div class="filter-field filter-group--mode">
                     <label class="filter-label" for="filterMode">Filter mode</label>
-                    <select name="filterMode" id="filterMode" class="input">
+                    <select id="filterMode" class="input">
                         <option value="all">All Time</option>
                         <option value="daily">Daily</option>
                         <option value="monthly">Monthly</option>
@@ -71,36 +64,25 @@
                     </select>
                 </div>
 
-                <!-- Dynamic inputs (JS adds date/month/year/range fields here) -->
+                <!-- Dynamic inputs -->
                 <div id="modeInputs" class="mode-inputs" aria-label="Mode inputs"></div>
+            
 
-                <!-- Clear -->
-                <div class="filter-actions">
-                    <button id="clearBtn" class="btn btn--ghost" type="button">
-                        <span aria-hidden="true">↻</span>
-                        Clear
-                    </button>
-                </div>
-            </div>
-        </section>
+                <!-- Results + List -->
+                <section class="card card--panel history-summary" aria-label="History summary">
+                    <div class="summary-row">
+                        <p><span class="summary-label">Results:</span> <span id="resultsCount">0</span></p>
+                    </div>
+                </section>
 
-        <section class="card card--panel history-summary" aria-label="History summary">
-            <div class="summary-row">
-                <p><span class="summary-label">Results:</span> <span id="resultsCount">0</span></p>
-                <p><span class="summary-label">Income:</span> <span id="incomeSum">0</span></p>
-                <p><span class="summary-label">Expenses:</span> <span id="expenseSum">0</span></p>
-                <p><span class="summary-label">Balance:</span> <span id="balanceSum">0</span></p>
-            </div>
-        </section>
+                <!-- List -->
+                <section class="history-list card card--panel" aria-label="Transaction list">
+                    <p id="emptyState" class="empty-state hidden" role="status">
+                        No transactions match your filters.
+                    </p>
+                    <ul id="txList" class="tx-list" aria-live="polite"></ul>
+                </section>
 
-        <!-- List -->
-        <section class="history-list card card--panel" aria-label="Transaction list">
-            <div id="emptyState" class="empty-state hidden" role="status">
-                No transactions match your filters.
-            </div>
-
-            <ul id="txList" class="tx-list" aria-live="polite"></ul>
-        </section>
     </main>
     <footer class="main-footer">
         <div class="container footer-container">
