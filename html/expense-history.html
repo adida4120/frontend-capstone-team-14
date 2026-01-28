@@ -1,15 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>History</title>
     <link rel="stylesheet" href="../css/stylesheet.css">
     <link rel="stylesheet" href="../css/expense-history.css">
+    <!-- Google Fonts: Sans-serif (Lesson 7: Modern/Clean) -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
 </head>
 
 <body>
- <header class="main-header">
+    <header class="main-header">
         <div class="container header-container">
             <div class="logo-group">
                 <img class="moneybuddy-logo"
@@ -32,80 +35,70 @@
             </nav>
         </div>
     </header>
- 
-    
- <main class="container page history-page">
-        <div class="page-head history-head">
-          <h2 class="history-title section-title ">Transaction History</h2>
+    <!-- ============================================================================================================================= -->
+    <main class="history-page">
+        <div class="history-head">
+            <h1 class="history-title">Transaction History</h1>
 
-
-          <button id="exportBtn" class="btn btn--success" type="button">
-            <span aria-hidden="true">⬇</span>
-            Export Records
-          </button>
+            <button id="exportBtn" class="btn btn--success" type="button">
+                Export CSV
+            </button>
         </div>
 
-
-        <!-- Filters panel -->
+        <!-- Filters -->
         <section class="card card--panel history-filters" aria-label="History filters">
-            <div class="filters-row">
-                 <!-- search -->
-                 <div class="filter-group filter-group--search">
-                    <label class="label filter-label" for="searchInput">Search</label>
-                    <div class="input-with-icon">
-                        <span class="input-icon" aria-hidden="true">🔎</span>
-                        <input id="searchInput" class="input" type="text" placeholder="Filter anything" autocomplete="off"/>
-                    </div>
-                 </div>
-              <!-- Filter mode -->
-               <div class="filter-group filter-group--mode">
-                <label class="filter-label" for="filterMode">Filter mode</label>
-                <select name="filter-Mode" id="filterMode" class="input">
-                    <option value="all">All Time</option>
-                    <option value="daily">Daily</option>
-                    <option value="monthly">Monthly</option>
-                    <option value="yearly">Yearly</option>
-                    <option value="range">Range</option>
-                </select>
-               </div>
-                   <!-- Range pickers -->
-                <div id="rangeWrap" class="range-fields hidden" aria-label="Date range">
-                    <div class="filter-group filter-group--date">
-                        <label class="label filter-label" for="fromDate">From</label>
-                        <input id="fromDate" class="input" type="date"/>
-                    </div>
-                    <div class="filter-date-field">
-                        <label class="label" for="toDate">To</label>
-                        <input id="toDate" class="input" type="date"/>
-                    </div>
+            <div class="filter-group">
+                <div class="filter-field">
+                    <label for="searchInput">Search</label>
+                    <input id="searchInput" type="text" placeholder="Search by category or note..." />
                 </div>
 
-
-                <!-- clear -->
-                <div class="filter-actions">
-                    <button id="clearBtn" class="btn btn--ghost" type="button">
-                        <span aria-hidden="true">↻</span>
-                        Clear
-                    </button>
+                <div class="filter-field filter-group--mode">
+                    <label class="filter-label" for="filterMode">Filter mode</label>
+                    <select id="filterMode" class="input">
+                        <option value="all">All Time</option>
+                        <option value="daily">Daily</option>
+                        <option value="monthly">Monthly</option>
+                        <option value="yearly">Yearly</option>
+                        <option value="range">Range</option>
+                    </select>
                 </div>
-            </div>
+
+                <!-- Dynamic inputs -->
+                <div id="modeInputs" class="mode-inputs" aria-label="Mode inputs"></div>
+            </div> 
         </section>
 
+        <!-- Summary -->
+        <section class="card card--panel history-summary" aria-label="History summary">
+            <div class="summary-row">
+                <p><span class="summary-label">Results:</span> <span id="resultsCount">0</span></p>
+            </div>
+        </section>
 
         <!-- List -->
-        <section class="history-list" aria-label="Transaction list">
-            <div id="emptyState" class="list empty-state" role="status">
-                No transaction match your filters.
-            </div>
-
-            <ul id="txList" class="tx-list" aria-live="polite">
-                
-            </ul>
+        <section class="history-list card card--panel" aria-label="Transaction list">
+            <p id="emptyState" class="empty-state hidden" role="status">
+                No transactions match your filters.
+            </p>
+            <ul id="txList" class="tx-list" aria-live="polite"></ul>
         </section>
     </main>
+    <footer class="main-footer">
+        <div class="container footer-container">
+            <div class="footer-logo">
+                <img src="https://github.com/adida4120/frontend-capstone-team-14/blob/feature-layout/images/MoneyBuddy_Logo.jpg?raw=true"
+                    alt="money buddy logo">
+                <span>MoneyBuddy</span>
+            </div>
+            <p class="footer-slogan">Making finance friendly, one buddy at a time.</p>
+            <p class="footer-copyright">© 2026 Final Project - Finnacial Planner.</p>
+        </div>
+    </footer>
 
-  
+
     <script src="../js/common.js"></script>
     <script src="../js/history.js"></script>
 </body>
+
 </html>
