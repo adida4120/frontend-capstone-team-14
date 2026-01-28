@@ -45,6 +45,7 @@
             </button>
         </div>
 
+        <!-- Filters -->
         <section class="card card--panel history-filters" aria-label="History filters">
             <div class="filter-group">
                 <div class="filter-field">
@@ -52,7 +53,6 @@
                     <input id="searchInput" type="text" placeholder="Search by category or note..." />
                 </div>
 
-                <!-- Filter mode -->
                 <div class="filter-field filter-group--mode">
                     <label class="filter-label" for="filterMode">Filter mode</label>
                     <select id="filterMode" class="input">
@@ -66,23 +66,23 @@
 
                 <!-- Dynamic inputs -->
                 <div id="modeInputs" class="mode-inputs" aria-label="Mode inputs"></div>
-            
+            </div> 
+        </section>
 
-                <!-- Results + List -->
-                <section class="card card--panel history-summary" aria-label="History summary">
-                    <div class="summary-row">
-                        <p><span class="summary-label">Results:</span> <span id="resultsCount">0</span></p>
-                    </div>
-                </section>
+        <!-- Summary -->
+        <section class="card card--panel history-summary" aria-label="History summary">
+            <div class="summary-row">
+                <p><span class="summary-label">Results:</span> <span id="resultsCount">0</span></p>
+            </div>
+        </section>
 
-                <!-- List -->
-                <section class="history-list card card--panel" aria-label="Transaction list">
-                    <p id="emptyState" class="empty-state hidden" role="status">
-                        No transactions match your filters.
-                    </p>
-                    <ul id="txList" class="tx-list" aria-live="polite"></ul>
-                </section>
-
+        <!-- List -->
+        <section class="history-list card card--panel" aria-label="Transaction list">
+            <p id="emptyState" class="empty-state hidden" role="status">
+                No transactions match your filters.
+            </p>
+            <ul id="txList" class="tx-list" aria-live="polite"></ul>
+        </section>
     </main>
     <footer class="main-footer">
         <div class="container footer-container">

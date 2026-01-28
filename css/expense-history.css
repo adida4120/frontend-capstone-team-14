@@ -107,28 +107,10 @@
   color: #0f2b5b;
 }
 
-/* ===== Responsive ===== */
-
-@media (max-width: 900px){
-  .history-filters .filter-group{
-    grid-template-columns: 1fr 1fr;
-  }
-
-  .mode-inputs{
-    grid-column: 1 / -1;
-  }
+.filter-actions{
+  display: flex;
+  justify-content: flex-end;
 }
-
-@media (max-width: 520px){
-  .history-filters .filter-group{
-    grid-template-columns: 1fr;
-  }
-
-  .mode-inputs--range{
-    grid-template-columns: 1fr;
-  }
-}
-
    .hidden{
     display: none;
    }
@@ -153,7 +135,10 @@
    LIST (MAIN REQUIREMENT)
    ========================= */
 
-   /* list container */
+  .history-list{
+  margin-top: 1rem;
+  }
+
    .tx-list{
   list-style: none;
   padding: 0;
@@ -161,10 +146,13 @@
   display: grid;
   grid-template-columns: 1fr;
   gap: 1rem;
+  width: 100%;
+
 }
 
-/* כל שורה = כרטיס */
+
 .tx-item{
+  width: 100%;
   position: relative;
   display: grid;
   grid-template-columns: auto 1fr auto auto;
@@ -175,9 +163,15 @@
   border-radius: 1rem;
   background: #fff;
   box-shadow: 0 8px 20px rgba(15, 23, 42, 0.06);
+  transition: transform 180ms cubic-bezier(.4,0,.2,1),
+              box-shadow 180ms cubic-bezier(.4,0,.2,1);
+}
+.tx-item:hover{
+  transform: translateY(-3px);
+  box-shadow: 0 14px 30px rgba(15, 23, 42, 0.12);
 }
 
-/* פס צד */
+/*side line */
 .tx-item::after{
   content: "";
   position: absolute;
@@ -189,7 +183,7 @@
   background: #94a3b8;
 }
 
-/* icon */
+
 .tx-icon{
   width: 44px;
   height: 44px;
@@ -199,7 +193,7 @@
   font-weight: 900;
 }
 
-/* text */
+
 .tx-title{
   font-weight: 800;
   color: #0f2b5b;
@@ -209,14 +203,15 @@
   color: #64748b;
 }
 
-/* amount */
+
 .tx-amount{
   font-weight: 900;
   font-size: 1.1rem;
   text-align: right;
+  white-space: nowrap;
 }
 
-/* delete */
+
 .tx-delete{
   border:none;
   background: transparent;
@@ -261,7 +256,25 @@
   #exportBtn{
     margin-left: auto;        
   }
+  .tx-item{
+  display: grid;
+  grid-template-columns: 44px 1fr auto;
+  gap: 1rem;
+  align-items: center;
+  }
+  .history-filters .filter-group{
+    grid-template-columns: 1fr;
+  }
+
+  .mode-inputs--range{
+    grid-template-columns: 1fr;
+  }
 }
+/* ===== Responsive ===== */
+
+
+
+
 
 
 /* =========================
