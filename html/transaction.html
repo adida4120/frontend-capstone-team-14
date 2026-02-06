@@ -3,9 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Transaction-Page</title>
-    <link rel="stylesheet" href="../css/stylesheet.css">
-    <link rel="stylesheet" href="../css/stylesheet.css">
+    <title>MoneyBuddy | Transaction</title>
+    <!-- <link rel="stylesheet" href="../css/stylesheet.css"> -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
@@ -13,13 +12,13 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Lora:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
 </head>
-<body>
+<body class="page-loaded"> <!--<לשנות>-->
     <header class="main-header">
         <div class="container header-container">
             <div class="logo-group">
                 <img class="moneybuddy-logo"
                     src="https://github.com/adida4120/frontend-capstone-team-14/blob/feature-layout/images/MoneyBuddy_Logo.jpg?raw=true"
-                    alt="money buddy logo">
+                    alt="money buddy logo" width=50px>
                 <h1 id="home-title" class="main-title">Money Buddy</h1>
             </div>
             <button class="menu-toggle" aria-label="Toggle Menu">
@@ -40,48 +39,49 @@
     <main>
         <section class="transaction-section small-display">
             <div class="grid-layout">
-                <div class="card-box" id="balance-card">
-                    <span id="balance-title"><small>Total Balance</small></span>
-                    <h2 id="balance-value">3500</h2>
-                </div>
-                <div class="card-box" id="income-card">
-                    <span id="income-title"><small>Total Balance</small></span>
-                    <h3 id="income-Value">7000</h3>
-                </div>
-                <div class="card-box" id="expense-card">
-                    <span id="expense-title"><small>Expense</small></span>
-                    <h3 id="expense-Value">3500</h3>
-                </div>
+            <div class="card-box" id="balance-card">
+                <span id="balance-title"><small>Total Balance</small></span>
+                <h2 id="balance-value">3500</h2>
+            </div>
+            <div class="card-box" id="income-card">
+                <span id="income-title"><small>Total Balance</small></span>
+                <h3 id="income-Value">7000</h3>
+            </div>
+            <div class="card-box" id="expense-card">
+                <span id="expense-title"><small>Expense</small></span>
+                <h3 id="expense-Value">3500</h3>
+            </div>
             </div>
         </section>
         <section class="transaction-section add-transaction">
-            <img src="C:\Users\Administrator\OneDrive\שולחן העבודה\לימודים\'שנה ג\אינטרנטיות\פרייקט גמר אינטרנטיות\frontend-capstone-team-14\images\income.png" alt="income icons" width=20px>
-            <form action="new activity" method="post" autocomplete="on">
+            <img src="https://github.com/adida4120/frontend-capstone-team-14/blob/Work-Lior/images/income.png?raw=true" alt="income icons" width=25px>
+            <form action="new action" method="post" autocomplete="on">
                 <fieldset>
-                <legend class="section-title">New Activity</legend>
+                <legend class="section-title">New Action</legend>
                     <p class="text-body">
-                        <input type="text" name="description" placeholder="activity name" spellcheck="true">
+                        <input type="text" name="description" placeholder="Actiom name" spellcheck="true">
                     </p>
                     <p class="text-body">
-                        <input type="number" step="1" min="0" name="amount" placeholder="amount ($)" required>
+                        <input type="number" step="0.01" min="0" name="amount" placeholder="amount ($)" required>
                     </p>
                     <p class="text-body">
-                        <select type="activity-type" name="activity-type" placeholder="" required>
+                        <select id="type-select" name="activity-category" required>
+                        <option value="category" disabled selected>Category</option>
                         <option value="income">Income</option>
                         <option value="expense">Expense</option>
                         </select>
                     </p>
                     <p class="text-body">
-                        <select name="activity-type" required>
-                            <option value="" disabled selected>Type</option>
-                            <optgroup label="income"></optgroup>
+                        <select id="activity-type" name="activity-type" required>
+                            <option id="type" disabled selected>Select Type</option>
+                            <optgroup id="group-income" label="Income">
                                 <option value="salary">Salary</option>
                                 <option value="refund">Refund</option>
                                 <option value="side Hustle">Side Hustle</option>
-                                <option value="rent">Rent</option>
                                 <option value="transfer-in">Transfer (Incoming)</option>
                             </optgroup>
-                            <optgroup label="expense"></optgroup>
+                            <optgroup id="group-expense" label="Expense">
+                                <option value="rent">Rent</option>
                                 <option value="entertainment">Entertainment</option>
                                 <option value="shopping">Shopping</option>
                                 <option value="insurance">Insurance</option>
@@ -93,8 +93,14 @@
                     </p>
                     <p>
                         <label for="activity-date"></label>
-                        <input type="date" id="activity-date" name="activity-date" min="2026-01-01" value="2026-01-01" required> <!--change when JV write-->
+                        <input type="date" id="activity-date" name="activity-date" min="2026-01-01" required>
                     </p>
+                    <legend class="submit button">
+                        <!--לבדוק האם צריך להכניס למאגר נתונים-->
+                        <div class="form-actions">
+                            <button type="submit" class="btn--success">Add to MoneyBuddy</button>
+                        </div>
+                    </legend>
                 </fieldset>
             </form>
         </section>
@@ -106,7 +112,7 @@
     <footer class="main-footer">
         <div class="container footer-container">
             <div class="footer-logo">
-                <img src="https://github.com/adida4120/frontend-capstone-team-14/blob/feature-layout/images/MoneyBuddy_Logo.jpg?raw=true" alt="money buddy logo">
+                <img src="https://github.com/adida4120/frontend-capstone-team-14/blob/feature-layout/images/MoneyBuddy_Logo.jpg?raw=true" alt="money buddy logo" width=50px>
                 <span>MoneyBuddy</span>
             </div>
             <p class="footer-slogan">Making finance friendly, one buddy at a time.</p>
@@ -114,5 +120,6 @@
         </div>
     </footer>
     <script rel="stylesheet" href="../js/transition.js"></script>
+    <script src="../js/transaction.js"></script>
 </body>
 </html>
