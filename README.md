@@ -58,14 +58,22 @@ ________________________________________
 ├── dashboard-planner.html  # Analytics Dashboard
 ├── transaction.html        # Add New Transactions
 ├── expense-history.html    # Full History List
+├── about.html              # About Page
 ├── contact.html            # Contact Form
 ├── css/
 │   ├── stylesheet.css      # Global styles & Variables
+│   ├── index.css           # Landing page styles
+│   ├── dashboard-planner.css # Dashboard specific styles
 │   ├── transaction.css     # Transaction page styles
-│   └── dashboard.css       # Dashboard specific styles
+│   ├── expense-history.css # History page styles
+│   ├── about.css           # About page styles
+│   └── contact.css         # Contact page styles
 ├── js/
 │   ├── common.js           # Shared logic
-│   ├── transaction.js      # Transaction logic (Add/Delete)
-│   └── dashboard.js        # Chart.js configuration
+│   ├── dashboard.js        # Chart.js configuration
+│   ├── transaction.js      # Transaction logic
+│   ├── history.js          # History page logic
+│   ├── about.js            # About page logic
+│   └── contact.js          # Contact form logic
 └── data/
     └── data.json           # Initial dummy data
