@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", function (){
+document.addEventListener("DOMContentLoaded", function () {
   console.log("history.js loaded");
 
   /* ========= DOM ========= */
@@ -18,49 +18,20 @@ document.addEventListener("DOMContentLoaded", function (){
   }
 
   /* ========= DATA ========= */
-  const STORAGE_KEY = "moneyBuddyData";
   let transactions = [];
   let filtered = [];
 
-
-  /* ========= LOAD / SAVE ========= */
-
-  async function loadData() {
-    try{
-      const localData = localStorage.getItem(STORAGE_KEY);
-
-      if(localData){
-      transactions = JSON.parse(localData);
-      console.log("History loaded from LocalStorage");}
-
-      else {
-        const res = await fetch("../data/data.json");
-        if(!res.ok) throw new Error("Failed to load data.json");
-
-        transactions = await res.json();
-
-        // Save JSON to LocalStorage the very first time
-        localStorage.setItem(STORAGE_KEY, JSON.stringify(transactions));
-        console.log("History loaded and saved to LocalStorage");
-      }
-
-   
-    }
-    catch(err){
-        console.error("Error loadimg data", err);
-        transactions = [];
-        renderList(filtered);
-        updateSummary(filtered);
-    } 
-
-    initMonthSelect(transactions);
-    buildModeInputs("all", transactions);
-    applyFilters();
-  }
-
- /* ========= START ========= */
-  loadData();
-
+  fetch("../data/data.json")
+    .then(function (res) { return res.json(); })
+    .then(function (data) {
+      transactions = data || [];
+      initMonthSelect(transactions);
+      buildModeInputs("all", transactions);
+      applyFilters(); // first render
+    })
+    .catch(function (err) {
+      console.error("Error loading data", err);
+    });
 
   /* ========= EVENTS ========= */
   if (searchInput) searchInput.addEventListener("input", applyFilters);
@@ -86,90 +57,33 @@ document.addEventListener("DOMContentLoaded", function (){
 
   /* ========= FILTERING ========= */
   function applyFilters() {
-    let query = "";
-    if (searchInput){
-      query = searchInput.value.toLowerCase().trim();
-    }
-
-    let selectedMonth = "all";
-     if (monthSelect){
-      selectedMonth = monthSelect.value;
-    }
-
-    let mode = "all";
-    if (filterMode){
-      mode = filterMode.value;
-    }
+    const q = (searchInput && searchInput.value ? searchInput.value : "").toLowerCase().trim();
+    const monthVal = monthSelect ? monthSelect.value : "all";
+    const mode = filterMode ? filterMode.value : "all";
 
     // Start from full list
     let items = transactions.slice();
 
-     /* ----- Text search ----- */
-     if(query !== ""){
-      items = items.filter(function(tx){
-
-        let category ="";
-        if(tx.category){
-          category = tx.category.toLowerCase();
-        }
-
-        let note ="";
-        if(tx.note){
-          note = tx.note.toLowerCase();
-        }
-
-        if(category.indexOf(query) !== -1){
-          return true;
-        }
-
-        if(note.indexOf(query) !== -1){
-          return true;
-        }
-
-        return false;
-      });
-     }
-
-
-    // // Search (category or note)
-    // if (q) {
-    //   items = items.filter(function (tx) {
-    //     const cat = (tx.category || "").toLowerCase();
-    //     const note = (tx.note || "").toLowerCase();
-    //     return cat.indexOf(q) !== -1 || note.indexOf(q) !== -1;
-    //   });
-    // }
-
-    /* ----- Month filter ----- */
-    if(selectedMonth !== "all"){
-     items = items.filter(function(tx){
-
-        const isoDate = toISODate(tx.date);
-
-        if(isoDate === ""){
-          return false;
-        }
-
-        const yearMonth = isoDate.substring(0,7);
-        return(yearMonth === selectedMonth)
-        
+    // Search (category or note)
+    if (q) {
+      items = items.filter(function (tx) {
+        const cat = (tx.category || "").toLowerCase();
+        const note = (tx.note || "").toLowerCase();
+        return cat.indexOf(q) !== -1 || note.indexOf(q) !== -1;
       });
     }
 
+    // Month select (quick filter)
+    if (monthVal && monthVal !== "all") {
+      items = items.filter(function (tx) {
+        const iso = toISODate(tx.date); // yyyy-mm-dd
+        if (!iso) return false;
+        return iso.substring(0, 7) === monthVal; // yyyy-mm
+      });
+    }
+
+    // Mode filters
     items = applyModeFilter(items, mode);
-
-
-    // // Month select (quick filter)
-    // if (monthVal && monthVal !== "all") {
-    //   items = items.filter(function (tx) {
-    //     const iso = toISODate(tx.date); // yyyy-mm-dd
-    //     if (!iso) return false;
-    //     return iso.substring(0, 7) === monthVal; // yyyy-mm
-    //   });
-    // }
-
-    // // Mode filters
-    // items = applyModeFilter(items, mode);
 
     // Sort by date DESC
     items.sort(function (a, b) {
@@ -181,32 +95,6 @@ document.addEventListener("DOMContentLoaded", function (){
     renderList(filtered);
     updateSummary(filtered);
   }
-
-/* =====================================================
-     RENDER LIST
-  ===================================================== */
-
-  function renderList(items) {
-
-    txList.innerHTML = "";
-
-    if (!items || items.length === 0) {
-      emptyState.classList.remove("hidden");
-      return;
-    }
-
-    emptyState.classList.add("hidden");
-
-    for (let i = 0; i < items.length; i++) {
-      const txItem = createTxItem(items[i]);
-      txList.appendChild(txItem);
-    }
-  }
-
-
-
-// //////////////////////////////////////////////////////////////////////////// old
-
 
   function applyModeFilter(items, mode) {
     if (!mode || mode === "all") return items;
@@ -387,31 +275,19 @@ document.addEventListener("DOMContentLoaded", function (){
   }
 
   function createTxItem(tx) {
+    const isIncome = tx.type === "income";
 
     const li = document.createElement("li");
-    if(tx.type === "income"){
-      li.className = "tx-item tx--income";
-    } else{
-      li.className ="tx-item tx--expense";
-    }
-   
+    li.className = "tx-item " + (isIncome ? "tx--income" : "tx--expense");
+
     // icon
     const icon = document.createElement("div");
     icon.className = "tx-icon";
     icon.setAttribute("aria-hidden", "true");
-    if(tx.type === "income"){
-      icon.textContent = "↗";
-    } else{
-      icon.textContent ="↘";
-    }
-    let isIncome = false;
-    if (tx.type === "income") {
-      isIncome = true;
-    }
+    icon.textContent = isIncome ? "↗" : "↘";
 
     // text
     const text = document.createElement("div");
-    
     const title = document.createElement("div");
     title.className = "tx-title";
     title.textContent = tx.note ? tx.note : tx.category;
@@ -426,14 +302,7 @@ document.addEventListener("DOMContentLoaded", function (){
     // amount
     const amount = document.createElement("div");
     amount.className = "tx-amount";
-    let amountValue = 0;
-    if (tx.amount) {
-      amountValue = Number(tx.amount);}
-     if (tx.type === "income") {
-      amount.textContent = "+ $" + amountValue.toLocaleString();
-    } else {
-      amount.textContent = "- $" + amountValue.toLocaleString();
-    }
+    amount.textContent = (isIncome ? "+ ₪" : "- ₪") + Number(tx.amount || 0).toLocaleString();
 
     // delete (optional UI only)
     const delBtn = document.createElement("button");
@@ -443,10 +312,25 @@ document.addEventListener("DOMContentLoaded", function (){
     delBtn.textContent = "🗑️";
 
     delBtn.addEventListener("click", function () {
-      li.remove();
-      // Note: this removes only from UI, not from JSON
-      if (txList.children.length === 0) emptyState.classList.remove("hidden");
-      resultsCount.textContent = txList.children.length;
+
+      Swal.fire({
+        title: "Delete transaction?",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonText: "Delete",
+        cancelButtonText: "Cancel"
+      }).then(function (result) {
+
+        if (!result.isConfirmed) return;
+
+        li.remove();
+
+        if (txList.children.length === 0) {
+          emptyState.classList.remove("hidden");
+        }
+
+        resultsCount.textContent = txList.children.length;
+      });
     });
 
     li.appendChild(icon);
@@ -494,56 +378,29 @@ document.addEventListener("DOMContentLoaded", function (){
 
     URL.revokeObjectURL(url);
   }
-function safeCSV(val) {
-  if (val === null || val === undefined) {
-    return '""';
+
+  function safeCSV(val) {
+    // Wrap in quotes and escape quotes
+    const s = (val === null || val === undefined) ? "" : String(val);
+    return '"' + s.replace(/"/g, '""') + '"';
   }
 
-  var text = String(val);
-
-  // If there are no double quotes, just wrap with quotes
-  if (text.indexOf('"') === -1) {
-    return '"' + text + '"';
+  /* ========= DATE HELPERS ========= */
+  function parseDMY(dmy) {
+    // dd-mm-yyyy
+    if (!dmy) return new Date(0);
+    const parts = dmy.split("-");
+    return new Date(Number(parts[2]), Number(parts[1]) - 1, Number(parts[0]));
   }
 
-  // Replace " with "" using split/join (no regex)
-  var newText = text.split('"').join('""');
-
-  return '"' + newText + '"';
-}
-
-  function parseDMY(dateStr) {
-  // supports both: DD-MM-YYYY and YYYY-MM-DD
-  if (!dateStr) return new Date(0);
-
-  const parts = dateStr.split("-");
-  if (parts.length !== 3) return new Date(0);
-
-  // YYYY-MM-DD
-  if (parts[0].length === 4) {
-    return new Date(dateStr);
+  function toISODate(dmy) {
+    // dd-mm-yyyy -> yyyy-mm-dd
+    if (!dmy) return "";
+    const parts = dmy.split("-");
+    if (parts.length !== 3) return "";
+    const dd = parts[0].padStart(2, "0");
+    const mm = parts[1].padStart(2, "0");
+    const yy = parts[2];
+    return yy + "-" + mm + "-" + dd;
   }
-
-  // DD-MM-YYYY
-  return new Date(Number(parts[2]), Number(parts[1]) - 1, Number(parts[0]));
-}
-
-  function toISODate(dateStr) {
-  // supports both: DD-MM-YYYY and YYYY-MM-DD
-  if (!dateStr) return "";
-
-  const parts = dateStr.split("-");
-  if (parts.length !== 3) return "";
-
-  // already YYYY-MM-DD
-  if (parts[0].length === 4) return dateStr;
-
-  // DD-MM-YYYY -> YYYY-MM-DD
-  const dd = parts[0].padStart(2, "0");
-  const mm = parts[1].padStart(2, "0");
-  const yy = parts[2];
-
-  return yy + "-" + mm + "-" + dd;
-  }
-})
-  
+});
