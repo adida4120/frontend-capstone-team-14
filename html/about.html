@@ -5,14 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MoneyBuddy | About</title>
     <link rel="stylesheet" href="../css/stylesheet.css">
+    <link rel="stylesheet" href="../css/about.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Lora:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Lora:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
 </head>
-<body>
+<body class="page-loaded">
     <header class="main-header">
         <div class="container header-container">
             <div class="logo-group">
@@ -37,52 +35,90 @@
         </div>
     </header>
 
-    <main>
-<body class="page-loaded"></body> <!--<לשנות>-->
-            <section class="about-section">
-                <p id="text-body">MoneyBuddy started in a classroom with a simple mission: to make financial literacy accessible to everyone. We don't believe in boring spreadsheets. We believe in visual habits and absolute privacy.</p>
-                </section>  
-            <section class="page-section about-cards">
-                <div class="card-box" id="about-data">
-                    <img src="../images/secure.png" alt="Safe icon" width="40">
-                    <h3 class="card-title">Your Data, Your PC</h3>
-                    <p></p>
+    <main class="about-page">
+        <section class="page-hero-gradient">
+            <div class="container">
+                <h1 class="hero-title-white">Our Story</h1>
+                <p class="hero-subtitle-white">Making financial literacy accessible, one habit at a time</p>
+                <div class="about-mission-card">
+                    <p>
+                        MoneyBuddy started in a classroom with a simple mission: to make financial literacy accessible to everyone. 
+                        We don't believe in boring spreadsheets. We believe in visual habits and absolute privacy.
+                    </p>
                 </div>
-                <div class="card-box" id="about-insights">
-                    <img src="../images/electric.png" alt="Blue lightning icon" width="40">
-                    <h3 class="card-title">Instant Insights</h3>
-                    <p class="text-small">Automated charts powered by Chart.js provide you with immediate clarity on your spending habits.</p>
-                </div>
-                <div class="card-box" id="about-people">
-                    <img src="../images/circle.png" alt="Heart icon" width="40">
-                    <h3 class="card-title">Built for People</h3>
-                    <p>Every button and color was chosen following Lesson 7 design patterns to reduce user friction.</p>
-                </div>
-            </section>
+            </div>
+        </section>
 
-            <section class="about-section team-section" id="about-us">
-                <h2 class="section-title">The Team Charter</h2>
-                <div class="team-member" id="about-adi">
-                    <h3 class="card-title">Adi Dahari</h3>
-                    <h4 class="label-title">Team Leader</h4>
-                    <p>...</p>
+        <section class="container page-section">
+            <h2 class="section-title-centered">The Core Pillars</h2>
+            <div class="about-grid">
+                <div class="card-box-modern">
+                    <div class="icon-circle">
+                        <img src="../images/secure.png" alt="Safe icon" width="40">
+                    </div>
+                    <h3 class="card-title">Your Data, Your PC</h3>
+                    <p class="text-muted">Privacy is our priority. Every piece of information stays on your device using LocalStorage.</p>
                 </div>
-                <div class="team-member" id="about-lior">
-                    <h3 class="card-title">Lior Volach</h3>
-                    <h4 class="label-title">Front-End</h4>
-                    <p>...</p>
+
+                <div class="card-box-modern">
+                    <div class="icon-circle">
+                        <img src="../images/electric.png" alt="Blue lightning icon" width="40">
+                    </div>
+                    <h3 class="card-title">Instant Insights</h3>
+                    <p class="text-muted">Automated charts powered by Chart.js provide you with immediate clarity on your habits.</p>
                 </div>
-                <div class="team-member" id="about-niv">
-                    <h3 class="card-title">Niv Gutkind</h3>
-                    <h4 class="label-title">Front-End</h4>
-                    <p>...</p>
+
+                <div class="card-box-modern">
+                    <div class="icon-circle">
+                        <img src="../images/circle.png" alt="Heart icon" width="40">
+                    </div>
+                    <h3 class="card-title">Built for People</h3>
+                    <p class="text-muted">Every button and color was chosen following Color Psychology to reduce user friction.</p>
                 </div>
-                <div class="team-member" id="about-yossi">
-                    <h3 class="card-title">Yossi</h3>
-                    <h4 class="label-title">Team Guide</h4>
-                    <p>...</p>
+            </div>
+        </section>
+        <section class="team-grid-section" id="about-us">
+            <div class="container">
+                <h2 class="section-title-centered">The Team Charter</h2>
+                <div class="team-layout-centered">
+                    <div class="card-box team-card">
+                        <div class="member-header">
+                            <h3 class="card-title">Adi Dahari</h3>
+                            <span class="label-title">Repo Owner</span>
+                        </div>
+                        <p>Managing the GitHub repository and page architecture. Developed History and Contact pages, including all CSS and JavaScript.</p>
+                    </div>
+                    <div class="card-box team-card">
+                        <div class="member-header">
+                            <h3 class="card-title">Lior Volach</h3>
+                            <span class="label-title">Front-End & Data</span>
+                        </div>
+                        <p>Developed Transaction and About pages. Responsible for LocalStorage implementation and all CSS/JS for his pages.</p>
+                    </div>
+                    <div class="card-box team-card">
+                        <div class="member-header">
+                            <h3 class="card-title">Niv Gutkind</h3>
+                            <span class="label-title">UI/UX Lead</span>
+                        </div>
+                        <p>Focused on primary UI components: Home, Dashboard, and site-wide Header/Footer including all CSS and JavaScript.</p>
+                    </div>
+                    <div class="card-box team-card">
+                        <div class="member-header">
+                            <h3 class="card-title">Yossi Arviv</h3>
+                            <span class="label-title">Team Guide</span>
+                        </div>
+                        <p>Providing technical mentorship and strategic project guidance throughout the development process.</p>
+                    </div>
                 </div>
-            </section>
+            </div>
+        </section>
+        <section class="container">
+            <div class="stats-banner-modern">
+                <h3 class="card-title">Your Progress</h3>
+                <span id="total-actions-count">0</span>
+                <p>Total actions tracked in MoneyBuddy</p>
+            </div>
+        </section>
     </main>
     <footer class="main-footer">
         <div class="container footer-container">
@@ -92,9 +128,9 @@
                 <span>MoneyBuddy</span>
             </div>
             <p class="footer-slogan">Making finance friendly, one buddy at a time.</p>
-            <p class="footer-copyright">© 2026 Final Project - Finnacial Planner.</p>
+            <p class="footer-copyright">© 2026 Final Project - Financial Planner.</p>
         </div>
     </footer>
-    <script rel="stylesheet" href="../js/transition.js"></script>
+    <script src="../js/about.js"></script>
 </body>
 </html>

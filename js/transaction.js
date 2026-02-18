@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', () =>
         const incomeValueEl = document.getElementById('income-Value');
         const expenseValueEl = document.getElementById('expense-Value');
 
-        function showToast() 
+        function showToast()
         {
             const toast = document.getElementById('toast');
             if (!toast){
@@ -21,10 +21,10 @@ document.addEventListener('DOMContentLoaded', () =>
             console.log("Class 'show' removed from toast");
             },1500); 
         }
-
         window.deleteTransaction = function(id) 
         {
             if (!confirm("האם אתה בטוח שברצונך למחוק פעולה זו?")) return;
+            
             let transactions = JSON.parse(localStorage.getItem('moneyBuddyData')) || [];
             transactions = transactions.filter(item => item.id !== id);
             localStorage.setItem('moneyBuddyData', JSON.stringify(transactions));
@@ -45,16 +45,16 @@ document.addEventListener('DOMContentLoaded', () =>
             });
 
             const totalBalance = totalIncome - totalExpense;
-            incomeValueEl.textContent = `${totalIncome.toLocaleString()} ₪`;
-            expenseValueEl.textContent = `${totalExpense.toLocaleString()} ₪`;
+            incomeValueEl.textContent = `${totalIncome.toLocaleString()}  $`;
+            expenseValueEl.textContent = `${totalExpense.toLocaleString()}  $`;
 
             if (totalBalance >= 0) {
-                balanceValueEl.textContent = `${totalBalance.toLocaleString()} ₪`;
+                balanceValueEl.textContent = `${totalBalance.toLocaleString()}  $`;
                 balanceValueEl.style.color = '#ffffff';
                 balanceValueEl.style.fontWeight = '700';
             }
             else {
-                balanceValueEl.textContent = `₪${(totalBalance).toLocaleString()}`; 
+                balanceValueEl.textContent = ` ${(totalBalance).toLocaleString()} $`; 
                 balanceValueEl.style.color = '#ff4d4d';
                 balanceValueEl.style.fontWeight = '900';
             }
@@ -77,8 +77,8 @@ document.addEventListener('DOMContentLoaded', () =>
                 </div>`;
                 return;
             }
-
             const recentItems = transactions.slice(-5).reverse();
+
             recentItems.forEach(item => 
             {
                 const activityItem = document.createElement('div');
@@ -98,7 +98,7 @@ document.addEventListener('DOMContentLoaded', () =>
                         </div>
                     </div>
                     <div class="activity-right-side">
-                        <span class="activity-amount ${typeClass}">${item.type === 'income' ? '' : '-'} ${formattedAmount} ₪</span>
+                        <span class="activity-amount ${typeClass}">${item.type === 'income' ? '' : '-'} ${formattedAmount}  $</span>
                         <button onclick="deleteTransaction('${item.id}')" class="btn-delete-icon">🗑️</button>
                     </div>
                     <div class="status-bar ${item.type}"></div>
@@ -109,14 +109,12 @@ document.addEventListener('DOMContentLoaded', () =>
 
         if (!localStorage.getItem('moneyBuddyData')) 
         {
-            fetch('../data/data.json')
-                .then(res => res.json())
-                .then(jsonData => 
+            fetch('../data/data.json').then(res => res.json()).then(jsonData => 
                 {
                     localStorage.setItem('moneyBuddyData', JSON.stringify(jsonData));
                     showRecentActivity();
                 })
-                .catch(err => console.error("Error loading JSON:", err));
+            .catch(err => console.error("Error loading JSON:", err));
         }
         else 
         {
@@ -127,6 +125,7 @@ document.addEventListener('DOMContentLoaded', () =>
 
         if (typeSelect && incomeGroup && expenseGroup) 
         {
+            updateTypeVisibility();
             typeSelect.addEventListener('change', () => 
             {
                 const val = typeSelect.value;
@@ -136,12 +135,27 @@ document.addEventListener('DOMContentLoaded', () =>
             });
         }
 
+        function updateTypeVisibility() {
+            const val = typeSelect.value;
+            if (incomeGroup) incomeGroup.style.display = (val === 'income') ? '' : 'none';
+            if (expenseGroup) expenseGroup.style.display = (val === 'expense') ? '' : 'none';
+        }
+
+        if (typeSelect && incomeGroup && expenseGroup) {
+            updateTypeVisibility(); 
+            typeSelect.addEventListener('change', () => {
+                updateTypeVisibility();
+                if (transactionTypeSelect) transactionTypeSelect.value = ""; // Reset sub-category on change
+            });
+        }
         if (transactionForm) 
         {
             transactionForm.addEventListener('submit', (e) => 
             {
                 e.preventDefault(); 
-                const amountVal = parseFloat(document.querySelector('input[name="amount"]').value) || 0; 
+                const amountInput = document.querySelector('input[name="amount"]');
+                const descInput = document.querySelector('input[name="description"]');
+                const amountVal = parseFloat(amountInput.value) || 0;
                 if (amountVal <= 0) 
                 {
                     alert("Please enter an amount greater than 0");
@@ -157,7 +171,6 @@ document.addEventListener('DOMContentLoaded', () =>
                     amount: amountVal,
                     note: document.querySelector('input[name="description"]').value
                 };
-
                 const data = JSON.parse(localStorage.getItem('moneyBuddyData')) || [];
                 data.push(newAction);
                 localStorage.setItem('moneyBuddyData', JSON.stringify(data));
@@ -166,6 +179,7 @@ document.addEventListener('DOMContentLoaded', () =>
                 showToast();
                 transactionForm.reset();
                 if (dateInput) dateInput.value = new Date().toISOString().split('T')[0];
+                updateTypeVisibility();
             });
         }
     });
