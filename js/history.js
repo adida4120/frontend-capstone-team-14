@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("DOMContentLoaded", function (){
   console.log("history.js loaded");
 
   /* ========= DOM ========= */
@@ -18,20 +18,49 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   /* ========= DATA ========= */
+  const STORAGE_KEY = "moneyBuddyData";
   let transactions = [];
   let filtered = [];
 
-  fetch("../data/data.json")
-    .then(function (res) { return res.json(); })
-    .then(function (data) {
-      transactions = data || [];
-      initMonthSelect(transactions);
-      buildModeInputs("all", transactions);
-      applyFilters(); // first render
-    })
-    .catch(function (err) {
-      console.error("Error loading data", err);
-    });
+
+  /* ========= LOAD / SAVE ========= */
+
+  async function loadData() {
+    try{
+      const localData = localStorage.getItem(STORAGE_KEY);
+
+      if(localData){
+      transactions = JSON.parse(localData);
+      console.log("History loaded from LocalStorage");}
+
+      else {
+        const res = await fetch("../data/data.json");
+        if(!res.ok) throw new Error("Failed to load data.json");
+
+        transactions = await res.json();
+
+        // Save JSON to LocalStorage the very first time
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(transactions));
+        console.log("History loaded and saved to LocalStorage");
+      }
+
+   
+    }
+    catch(err){
+        console.error("Error loadimg data", err);
+        transactions = [];
+        renderList(filtered);
+        updateSummary(filtered);
+    } 
+
+    initMonthSelect(transactions);
+    buildModeInputs("all", transactions);
+    applyFilters();
+  }
+
+ /* ========= START ========= */
+  loadData();
+
 
   /* ========= EVENTS ========= */
   if (searchInput) searchInput.addEventListener("input", applyFilters);
@@ -57,33 +86,90 @@ document.addEventListener("DOMContentLoaded", function () {
 
   /* ========= FILTERING ========= */
   function applyFilters() {
-    const q = (searchInput && searchInput.value ? searchInput.value : "").toLowerCase().trim();
-    const monthVal = monthSelect ? monthSelect.value : "all";
-    const mode = filterMode ? filterMode.value : "all";
+    let query = "";
+    if (searchInput){
+      query = searchInput.value.toLowerCase().trim();
+    }
+
+    let selectedMonth = "all";
+     if (monthSelect){
+      selectedMonth = monthSelect.value;
+    }
+
+    let mode = "all";
+    if (filterMode){
+      mode = filterMode.value;
+    }
 
     // Start from full list
     let items = transactions.slice();
 
-    // Search (category or note)
-    if (q) {
-      items = items.filter(function (tx) {
-        const cat = (tx.category || "").toLowerCase();
-        const note = (tx.note || "").toLowerCase();
-        return cat.indexOf(q) !== -1 || note.indexOf(q) !== -1;
+     /* ----- Text search ----- */
+     if(query !== ""){
+      items = items.filter(function(tx){
+
+        let category ="";
+        if(tx.category){
+          category = tx.category.toLowerCase();
+        }
+
+        let note ="";
+        if(tx.note){
+          note = tx.note.toLowerCase();
+        }
+
+        if(category.indexOf(query) !== -1){
+          return true;
+        }
+
+        if(note.indexOf(query) !== -1){
+          return true;
+        }
+
+        return false;
+      });
+     }
+
+
+    // // Search (category or note)
+    // if (q) {
+    //   items = items.filter(function (tx) {
+    //     const cat = (tx.category || "").toLowerCase();
+    //     const note = (tx.note || "").toLowerCase();
+    //     return cat.indexOf(q) !== -1 || note.indexOf(q) !== -1;
+    //   });
+    // }
+
+    /* ----- Month filter ----- */
+    if(selectedMonth !== "all"){
+     items = items.filter(function(tx){
+
+        const isoDate = toISODate(tx.date);
+
+        if(isoDate === ""){
+          return false;
+        }
+
+        const yearMonth = isoDate.substring(0,7);
+        return(yearMonth === selectedMonth)
+        
       });
     }
 
-    // Month select (quick filter)
-    if (monthVal && monthVal !== "all") {
-      items = items.filter(function (tx) {
-        const iso = toISODate(tx.date); // yyyy-mm-dd
-        if (!iso) return false;
-        return iso.substring(0, 7) === monthVal; // yyyy-mm
-      });
-    }
-
-    // Mode filters
     items = applyModeFilter(items, mode);
+
+
+    // // Month select (quick filter)
+    // if (monthVal && monthVal !== "all") {
+    //   items = items.filter(function (tx) {
+    //     const iso = toISODate(tx.date); // yyyy-mm-dd
+    //     if (!iso) return false;
+    //     return iso.substring(0, 7) === monthVal; // yyyy-mm
+    //   });
+    // }
+
+    // // Mode filters
+    // items = applyModeFilter(items, mode);
 
     // Sort by date DESC
     items.sort(function (a, b) {
@@ -95,6 +181,32 @@ document.addEventListener("DOMContentLoaded", function () {
     renderList(filtered);
     updateSummary(filtered);
   }
+
+/* =====================================================
+     RENDER LIST
+  ===================================================== */
+
+  function renderList(items) {
+
+    txList.innerHTML = "";
+
+    if (!items || items.length === 0) {
+      emptyState.classList.remove("hidden");
+      return;
+    }
+
+    emptyState.classList.add("hidden");
+
+    for (let i = 0; i < items.length; i++) {
+      const txItem = createTxItem(items[i]);
+      txList.appendChild(txItem);
+    }
+  }
+
+
+
+// //////////////////////////////////////////////////////////////////////////// old
+
 
   function applyModeFilter(items, mode) {
     if (!mode || mode === "all") return items;
@@ -275,19 +387,31 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   function createTxItem(tx) {
-    const isIncome = tx.type === "income";
 
     const li = document.createElement("li");
-    li.className = "tx-item " + (isIncome ? "tx--income" : "tx--expense");
-
+    if(tx.type === "income"){
+      li.className = "tx-item tx--income";
+    } else{
+      li.className ="tx-item tx--expense";
+    }
+   
     // icon
     const icon = document.createElement("div");
     icon.className = "tx-icon";
     icon.setAttribute("aria-hidden", "true");
-    icon.textContent = isIncome ? "↗" : "↘";
+    if(tx.type === "income"){
+      icon.textContent = "↗";
+    } else{
+      icon.textContent ="↘";
+    }
+    let isIncome = false;
+    if (tx.type === "income") {
+      isIncome = true;
+    }
 
     // text
     const text = document.createElement("div");
+    
     const title = document.createElement("div");
     title.className = "tx-title";
     title.textContent = tx.note ? tx.note : tx.category;
@@ -302,7 +426,14 @@ document.addEventListener("DOMContentLoaded", function () {
     // amount
     const amount = document.createElement("div");
     amount.className = "tx-amount";
-    amount.textContent = (isIncome ? "+ ₪" : "- ₪") + Number(tx.amount || 0).toLocaleString();
+    let amountValue = 0;
+    if (tx.amount) {
+      amountValue = Number(tx.amount);}
+     if (tx.type === "income") {
+      amount.textContent = "+ $" + amountValue.toLocaleString();
+    } else {
+      amount.textContent = "- $" + amountValue.toLocaleString();
+    }
 
     // delete (optional UI only)
     const delBtn = document.createElement("button");
@@ -363,196 +494,56 @@ document.addEventListener("DOMContentLoaded", function () {
 
     URL.revokeObjectURL(url);
   }
-
-  function safeCSV(val) {
-    // Wrap in quotes and escape quotes
-    const s = (val === null || val === undefined) ? "" : String(val);
-    return '"' + s.replace(/"/g, '""') + '"';
+function safeCSV(val) {
+  if (val === null || val === undefined) {
+    return '""';
   }
 
-  /* ========= DATE HELPERS ========= */
-  function parseDMY(dmy) {
-    // dd-mm-yyyy
-    if (!dmy) return new Date(0);
-    const parts = dmy.split("-");
-    return new Date(Number(parts[2]), Number(parts[1]) - 1, Number(parts[0]));
+  var text = String(val);
+
+  // If there are no double quotes, just wrap with quotes
+  if (text.indexOf('"') === -1) {
+    return '"' + text + '"';
   }
 
-  function toISODate(dmy) {
-    // dd-mm-yyyy -> yyyy-mm-dd
-    if (!dmy) return "";
-    const parts = dmy.split("-");
-    if (parts.length !== 3) return "";
-    const dd = parts[0].padStart(2, "0");
-    const mm = parts[1].padStart(2, "0");
-    const yy = parts[2];
-    return yy + "-" + mm + "-" + dd;
+  // Replace " with "" using split/join (no regex)
+  var newText = text.split('"').join('""');
+
+  return '"' + newText + '"';
+}
+
+  function parseDMY(dateStr) {
+  // supports both: DD-MM-YYYY and YYYY-MM-DD
+  if (!dateStr) return new Date(0);
+
+  const parts = dateStr.split("-");
+  if (parts.length !== 3) return new Date(0);
+
+  // YYYY-MM-DD
+  if (parts[0].length === 4) {
+    return new Date(dateStr);
   }
-});
 
+  // DD-MM-YYYY
+  return new Date(Number(parts[2]), Number(parts[1]) - 1, Number(parts[0]));
+}
 
+  function toISODate(dateStr) {
+  // supports both: DD-MM-YYYY and YYYY-MM-DD
+  if (!dateStr) return "";
 
-// document.addEventListener('DOMContentLoaded', function(){
-//    console.log('history.js loaded');
-   
-//      /* ========= DOM ELEMENTS ========= */
-//    const listEl =document.querySelector("#txList");
-//    const emptyState = document.querySelector("#emptyState");
-   
+  const parts = dateStr.split("-");
+  if (parts.length !== 3) return "";
 
-//    const resultsCount = document.getElementById('resultsCount');
-   
+  // already YYYY-MM-DD
+  if (parts[0].length === 4) return dateStr;
 
-//    if(!listEl || !emptyState){
-//       console.error("Missing required HTML elements (txList / emptyState)");
-//       return;
-//    }
+  // DD-MM-YYYY -> YYYY-MM-DD
+  const dd = parts[0].padStart(2, "0");
+  const mm = parts[1].padStart(2, "0");
+  const yy = parts[2];
 
-//      /* ========= DATA ========= */
-   
-//    let transactions = [];
-
-//    fetch ('../data/data.json')
-//      .then(function (response){
-//       return response.json();
-//      })
-//      .then(function(data){
-//       transactions = data ;
-//       renderList(transactions);
-//       updateSummary(transactions);
-//       })
-
-//      .catch(function(error){
-//       console.error("Error loading data", error)
-//      });
-
-
-//   /* ========= FUNCTIONS ========= */
-//    function renderList(items){
-//       listEl.innerHTML=" ";
-
-//       if (!items|| items.length === 0 ){
-//          emptyState.classList.remove("hidden");
-//          return;
-//       }
-
-//       emptyState.classList.add("hidden");
-
-//       const sortedItems = items.slice().sort(function (a, b) {
-//       return parseDate(b.date) - parseDate(a.date);
-//       });
-
-//        // Create list items
-   
-
-//       for (let i = 0; i < sortedItems.length; i++){
-//          const tx = sortedItems[i];
-//          const isIncome = tx.type === "income";
-
-//          const li = document.createElement("li");
-//          li.className = "tx-item " + (isIncome ? "tx--income" : "tx--expense");
-//          li.dataset.id = tx.id;
-
-//          const icon = document.createElement("div");
-//          icon.className = "tx-icon";
-//          icon.setAttribute("aria-hidden", "true");
-//          icon.textContent = isIncome ? "↗" : "↘";
-//          const text = document.createElement("div");
-
-//          const title = document.createElement("div");
-//          title.className = "tx-title";
-//          title.textContent = tx.note ? tx.note : tx.category;
-
-//          const sub = document.createElement("div");
-//          sub.className = "tx-sub";
-//          sub.textContent = tx.date + " • " + tx.category;
-
-//          text.appendChild(title);
-//          text.appendChild(sub);
-//          const amount = document.createElement("div");
-//          amount.className = "tx-amount";
-//          amount.textContent = (isIncome ? "+ ₪" : "- ₪") + Number(tx.amount).toLocaleString();
-
-//          const delBtn = document.createElement("button");
-//          delBtn.className = "tx-delete";
-//          delBtn.type = "button";
-//          delBtn.setAttribute("aria-label", "Delete transaction");
-//          delBtn.textContent = "🗑️";
-
-//          li.appendChild(icon);
-//          li.appendChild(text);
-//          li.appendChild(amount);
-//          li.appendChild(delBtn);
-
-//          listEl.appendChild(li);
-//       }
-
-
-
-
-
-//       // for (let i = 0; i < sortedItems.length; i++) {
-//       // const tx = sortedItems[i];
-//       // const li = document.createElement('li');
-//       // li.className = 'tx-item';
-//       // /* Determine sign based on transaction type */
-//       // let sign = '-';
-//       // if (tx.type === 'income') {
-//       //   sign = '+';
-//       // }
-
-//       //  /* Handle optional note */
-//       // let noteText = '';
-//       // if (tx.note) {
-//       //   noteText = tx.note;
-//       // }
-
-//       /* Build HTML using classic string concatenation */
-//       // li.innerHTML =
-//       //   '<div class="tx-main">' +
-//       //     '<div class="tx-category">' + tx.category + '</div>' +
-//       //     '<div class="tx-meta">' + tx.date + ' • ' + noteText + '</div>' +
-//       //   '</div>' +
-//       //   '<div class="tx-amount ' + tx.type + '">' +
-//       //     sign + Number(tx.amount).toLocaleString() +
-//       //   '</div>';
-
-//       //  listEl.appendChild(li);
-//       //  }
-//    }
-
-//      /* ========= UPDATE SUMMARY VALUES ========= */
-//    function updateSummary(items) {
-//        if (!resultsCount) return;
-//          resultsCount.textContent = items.length;
-//    }
-
-   
-//   /* ========= PARSE DATE FROM dd-mm-yyyy FORMAT ========= */
-//   function parseDate(dateStr) {
-//     const parts = dateStr.split('-');
-//     return new Date(parts[2], parts[1] - 1, parts[0]);
-//   }
-
-// })
-// ;
-
-// // exportToCSV(){
-// //                 const filters = app.getHistoryFilters();
-// //                 const results = engine.getFilteredData(filters);
-// //                 if (results.length === 0) { alert('Nothing to export.'); return; }
-// //                 let csv = "ID,Title,Amount,Type,Category,Date,Note\n";
-// //                 results.forEach(item => {
-// //                     csv += `${item.id},"${item.title.replace(/"/g, '""')}",${item.amount},${item.type},${item.category},${item.date},"${(item.note || "").replace(/"/g, '""')}"\n`;
-// //                 });
-// //                 const link = document.createElement("a");
-// //                 link.setAttribute("href", encodeURI("data:text/csv;charset=utf-8," + csv));
-// //                 link.setAttribute("download", `MoneyBuddy_Export_${new Date().toISOString().split('T')[0]}.csv`);
-// //                 document.body.appendChild(link);
-// //                 link.click();
-// //                 document.body.removeChild(link);
-// //                }
-
-
-
-
+  return yy + "-" + mm + "-" + dd;
+  }
+})
+  
