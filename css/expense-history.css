@@ -119,6 +119,10 @@
    SUMMARY
    ========================= */
 
+   .history-summary{
+    margin-top: 1.25rem;
+   }
+
    .summary-row{
     display: flex;
     flex-wrap: wrap;
@@ -246,6 +250,9 @@
 }
 
 @media (max-width: 520px){
+  .history-title{
+    font-size: 1.5rem;
+  }
   .filters-grid{
     grid-template-columns: 1fr;
   }
