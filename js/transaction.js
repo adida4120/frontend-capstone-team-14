@@ -154,7 +154,6 @@ document.addEventListener('DOMContentLoaded', () =>
             {
                 e.preventDefault(); 
                 const amountInput = document.querySelector('input[name="amount"]');
-                const descInput = document.querySelector('input[name="description"]');
                 const amountVal = parseFloat(amountInput.value) || 0;
                 if (amountVal <= 0) 
                 {

@@ -31,6 +31,7 @@ main {
     padding-left: 10px;
     padding-right: 10px;
 }
+/* TOTAL DISPLAY */
 .grid-layout {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -75,12 +76,15 @@ main {
     letter-spacing: 0.05px;
     font-size: 0.85rem;
     color: #64748b;
+}
 .card-box h2, .card-box h3 {
     font-size: 2rem;
     font-weight: 700;
 }
 #income-Value { color: #22c55e; }
 #expense-Value { color: #ef4444; }
+/* FORM STYLES */
+.add-transaction form {
     background-color: #ffffff;
     padding: 35px;
     border-radius: 12px;
@@ -112,8 +116,9 @@ main {
 .form-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 15px; 
+    gap: 20px;
 }
+/* Form Groups */
 .form-group {
     display: flex;
     flex-direction: column;
@@ -127,13 +132,13 @@ main {
     letter-spacing: 0.01em;
 }
 .form-group input, .form-group select {
-    padding: 12px;
+    padding: 14px;/
     border: 1px solid #cbd5e1;
     border-radius: 8px;
-    font-size: 0.9rem; 
+    font-size: 1rem; 
     color: #1e293b;
     background-color: #ffffff;
-    transition: border-color 0.2s;
+    transition: border-color 0.2s, box-shadow 0.2s;
     letter-spacing: 0.01em;
     width: 100%;
 }
@@ -142,13 +147,9 @@ main {
     border-color: #2563eb;
     box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.1);
 }
-.form-actions {
-    grid-column: span 2;
-    margin-top: 10px;
-}
 .btn--success {
-    grid-column: span 2; 
     width: 100%;
+    align-self: flex-end;
     background-color: #2563eb;
     color: white;
     padding: 15px;
@@ -158,11 +159,17 @@ main {
     font-weight: 600;
     cursor: pointer;
     transition: background-color 0.2s;
-    margin-top: 15px;
+    margin-top: 0;
 }
 .btn--success:hover {
     background-color: #1d4ed8;
+    transform: translateY(-2px);
+    box-shadow: 0 10px 15px -3px rgba(37, 99, 235, 0.3);
 }
+.btn--success:active {
+    transform: translateY(0);
+}
+/* RECENT ACTIVITY */
 .text-success { color: #22c55e !important; }
 .text-danger { color: #ef4444 !important; }
 .activity-item-card {
@@ -282,7 +289,6 @@ main {
 .activity-item-card {
     animation: slideInFade 0.4s ease-out forwards;
 }
-
 .empty-state {
     display: flex;
     flex-direction: column;
@@ -307,6 +313,7 @@ main {
     max-width: 500px;
     line-height: 1.5;
 }
+/* Toast Message */
 .toast-message {
     position: fixed;
     top: 20px;
@@ -332,11 +339,9 @@ main {
     .form-grid {
         grid-template-columns: 1fr;
     }
-    
     .btn--success {
         grid-column: span 1;
     }
-    
     .card-box {
         padding: 20px;
     }
