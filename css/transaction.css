@@ -1,26 +1,4 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
-:root {
-    --primary-blue: #2563eb;
-    --success-green: #22c55e;
-    --danger-red: #ef4444;
-    --text-main: #1e293b;
-    --text-muted: #64748b;
-    --bg-light: #f8fafc;
-    --white: #ffffff;
-    --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-}
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-.main-header {
-    background-color: #ffffff;
-    border-bottom: 2px solid #f1f5f9;
-    padding: 10px;
-    margin-bottom: 20px;
-    position: relative;
-}
 .page-main-title {
     position: relative;
     z-index: 10;
@@ -31,7 +9,7 @@
     margin-bottom: 25px;
     font-size: 1.75rem;
     font-weight: 800;
-    color: var(--text-main);
+    color: #1e293b;
     clear: both;
 }
 @media (max-width: 768px) {
@@ -45,20 +23,14 @@
     from { opacity: 0; }
     to { opacity: 1; }
 }
-body {
-    animation: fadeInPage 0.6s ease-in forwards;
-    font-family: 'Inter', sans-serif;
-    background-color: var(--bg-light);
-    color: var(--text-main);
-    padding: 10px;
-}
 main {
+    animation: fadeInPage 0.6s ease-in forwards;
     padding-top: 10px;
     max-width: 1200px;
     margin: 0 auto;
+    padding-left: 10px;
+    padding-right: 10px;
 }
-
-/*TOTAL DISPLAY */
 .grid-layout {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -66,10 +38,10 @@ main {
     margin-bottom: 20px;
 }
 .card-box {
-    background: var(--white);
+    background: #ffffff;
     padding: 25px;
     border-radius: 20px;
-    box-shadow: var(--shadow);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
     display: flex;
     flex-direction: column;
     gap: 10px;
@@ -82,7 +54,7 @@ main {
     box-shadow: 0 10px 15px -3px rgba(37, 99, 235, 0.3); 
 }
 #balance-card:hover, .card-box:hover {
-    transform: translateY(-10px); 
+    transform: translateY(-5px);
 }
 #balance-card small {
     color: rgba(255, 255, 255, 0.8); 
@@ -102,21 +74,18 @@ main {
     font-weight: 600;
     letter-spacing: 0.05px;
     font-size: 0.85rem;
-    color: var(--text-muted);
-}
+    color: #64748b;
 .card-box h2, .card-box h3 {
     font-size: 2rem;
     font-weight: 700;
 }
-#income-Value { color: var(--success-green); }
-#expense-Value { color: var(--danger-red); }
-
-.add-transaction form {
-    background-color: var(--white);
+#income-Value { color: #22c55e; }
+#expense-Value { color: #ef4444; }
+    background-color: #ffffff;
     padding: 35px;
     border-radius: 12px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
-    border-top: 6px solid var(--primary-blue);
+    border-top: 6px solid #2563eb;
     margin-bottom: 40px;
 }
 .form-header {
@@ -138,14 +107,13 @@ main {
 .form-header p {    
     width: 100%;
     margin-top: 5px;
-    color: var(--text-muted);
+    color: #64748b;
 }
 .form-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 10px;
+    gap: 15px; 
 }
-/* עיצוב כל קבוצת שדה (Label + Input) */
 .form-group {
     display: flex;
     flex-direction: column;
@@ -153,7 +121,7 @@ main {
 .form-group label {
     font-size: 0.95rem;
     font-weight: 700;
-    color: var(--text-muted);
+    color: #64748b;
     margin-bottom: 8px;
     text-transform: uppercase;
     letter-spacing: 0.01em;
@@ -162,41 +130,41 @@ main {
     padding: 12px;
     border: 1px solid #cbd5e1;
     border-radius: 8px;
-    font-size: 0.75rem;
-    color: var(--text-main);
+    font-size: 0.9rem; 
+    color: #1e293b;
     background-color: #ffffff;
     transition: border-color 0.2s;
     letter-spacing: 0.01em;
+    width: 100%;
 }
 .form-group input:focus, .form-group select:focus {
     outline: none;
-    border-color: var(--primary-blue);
-    box-shadow: 0 0 0 5px rgba(37, 99, 235, 0.1);
+    border-color: #2563eb;
+    box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.1);
 }
 .form-actions {
     grid-column: span 2;
     margin-top: 10px;
 }
 .btn--success {
+    grid-column: span 2; 
     width: 100%;
-    background-color: var(--primary-blue);
+    background-color: #2563eb;
     color: white;
-    padding: 25px;
+    padding: 15px;
     border: none;
     border-radius: 8px;
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     font-weight: 600;
     cursor: pointer;
     transition: background-color 0.2s;
+    margin-top: 15px;
 }
 .btn--success:hover {
     background-color: #1d4ed8;
 }
-
-
-/*RECENT ACTIVITY*/
-.text-success { color: var(--success-green) !important; }
-.text-danger { color: var(--danger-red) !important; }
+.text-success { color: #22c55e !important; }
+.text-danger { color: #ef4444 !important; }
 .activity-item-card {
     display: flex;
     justify-content: space-between;
@@ -220,21 +188,21 @@ main {
     align-items: center;
     gap: 15px;
 }
-.activity-info strong{
+.activity-info strong {
     font-size: 1rem;
-    color: var(--text-main);
+    color: #1e293b;
     display: block;
 }
-.activity-info small{
-    color: var(--text-muted);
+.activity-info small {
+    color: #64748b;
     font-size: 0.85rem;
 }
-.activity-right-side{
+.activity-right-side {
     display: flex;
     align-items: center;
     gap: 12px;
 }
-.activity-amount{
+.activity-amount {
     font-weight: 700;
     font-size: 1.1rem;
     white-space: nowrap;
@@ -255,7 +223,7 @@ main {
 .history-link {
     display: inline-block;
     text-decoration: none;
-    color: var(--primary-blue);
+    color: #2563eb;
     font-weight: 600;
     font-size: 0.9rem;
     padding: 6px 12px;
@@ -301,8 +269,6 @@ main {
 .btn-delete-icon:hover {
     opacity: 1;
 }
-
-
 @keyframes slideInFade {
     from {
         opacity: 0;
@@ -317,7 +283,6 @@ main {
     animation: slideInFade 0.4s ease-out forwards;
 }
 
-
 .empty-state {
     display: flex;
     flex-direction: column;
@@ -328,7 +293,7 @@ main {
     background-color: #ffffff;
     border: 2px dashed #e2e8f0;
     border-radius: 16px;
-    color: var(--text-muted);
+    color: #64748b;
 }
 .empty-icon {
     font-size: 5rem;
@@ -342,7 +307,6 @@ main {
     max-width: 500px;
     line-height: 1.5;
 }
-
 .toast-message {
     position: fixed;
     top: 20px;
@@ -354,13 +318,26 @@ main {
     border-radius: 50px;
     font-weight: 600;
     box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.2);
-    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.4s;
     z-index: 2000;
     opacity: 0;
     visibility: hidden;
 }
 .toast-message.show {
-    transform: translateX(-50%) translateY(40px);
+    transform: translateX(-50%) translateY(80px);
     opacity: 1;
     visibility: visible;
+}
+@media (max-width: 768px) {
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .btn--success {
+        grid-column: span 1;
+    }
+    
+    .card-box {
+        padding: 20px;
+    }
 }
