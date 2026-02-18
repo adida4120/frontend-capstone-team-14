@@ -4,15 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MoneyBuddy | Transaction</title>
-    <!-- <link rel="stylesheet" href="../css/stylesheet.css"> -->
+    <link rel="stylesheet" href="../css/stylesheet.css">
+    <link rel="stylesheet" href="../css/transaction.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Lora:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
 </head>
-<body class="page-loaded"> <!--<לשנות>-->
+<body>
     <header class="main-header">
         <div class="container header-container">
             <div class="logo-group">
@@ -37,48 +35,59 @@
         </div>
     </header>
     <main>
+        <h1 class="page-main-title">New Transaction </h1>
+
         <section class="transaction-section small-display">
             <div class="grid-layout">
-            <div class="card-box" id="balance-card">
-                <span id="balance-title"><small>Total Balance</small></span>
-                <h2 id="balance-value">3500</h2>
-            </div>
-            <div class="card-box" id="income-card">
-                <span id="income-title"><small>Total Balance</small></span>
-                <h3 id="income-Value">7000</h3>
-            </div>
-            <div class="card-box" id="expense-card">
-                <span id="expense-title"><small>Expense</small></span>
-                <h3 id="expense-Value">3500</h3>
-            </div>
+                <div class="card-box" id="balance-card">
+                    <span id="balance-title"><small>CURRENT BALANCE</small></span>
+                    <h2 id="balance-value">0 ₪</h2>
+                </div>
+                <div class="card-box" id="income-card">
+                    <span id="income-title"><small>INCOME</small></span>
+                    <h3 id="income-Value">0 ₪</h3>
+                </div>
+                <div class="card-box" id="expense-card">
+                    <span id="expense-title"><small>EXPENSES</small></span>
+                    <h3 id="expense-Value">0 ₪</h3>
+                </div>
             </div>
         </section>
+
         <section class="transaction-section add-transaction">
-            <img src="https://github.com/adida4120/frontend-capstone-team-14/blob/Work-Lior/images/income.png?raw=true" alt="income icons" width=25px>
-            <form action="new action" method="post" autocomplete="on">
-                <fieldset>
-                <legend class="section-title">New Action</legend>
-                    <p class="text-body">
-                        <input type="text" name="description" placeholder="Actiom name" spellcheck="true">
-                    </p>
-                    <p class="text-body">
-                        <input type="number" step="0.01" min="0" name="amount" placeholder="amount ($)" required>
-                    </p>
-                    <p class="text-body">
+            <form id="new-transaction"  action="#" method="post" autocomplete="on">
+                <div class="form-header">
+                <img src="https://github.com/adida4120/frontend-capstone-team-14/blob/Work-Lior/images/income.png?raw=true" alt="income icons" width=40px>
+                <h2>New Action</h2>
+                <p>Add a new transaction to track your finances.</p>
+                </div>
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="action-name">Action Name </label>
+                        <input type="text" id="action-name" name="description" placeholder=" e.g., Groceries" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="amount">Amount </label>
+                        <input type="number" id="amount" name="amount" step="0.01" min="0" placeholder=" 0.00 ₪" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="category">Category </label>
                         <select id="type-select" name="activity-category" required>
-                        <option value="category" disabled selected>Category</option>
+                        <option value="category" disabled selected>Choose One</option>
                         <option value="income">Income</option>
                         <option value="expense">Expense</option>
                         </select>
-                    </p>
-                    <p class="text-body">
-                        <select id="activity-type" name="activity-type" required>
-                            <option id="type" disabled selected>Select Type</option>
+                    </div>
+                    <div class="form-group">
+                        <label for="transaction-type">Transaction Type </label>
+                        <select id="transaction-type" name="transaction-type" required>
+                            <optgroup id="type" label="Select Type" disabled selected></optgroup>
                             <optgroup id="group-income" label="Income">
                                 <option value="salary">Salary</option>
                                 <option value="refund">Refund</option>
                                 <option value="side Hustle">Side Hustle</option>
                                 <option value="transfer-in">Transfer (Incoming)</option>
+                                <option value="other-in">Other (Incoming)</option>
                             </optgroup>
                             <optgroup id="group-expense" label="Expense">
                                 <option value="rent">Rent</option>
@@ -88,25 +97,24 @@
                                 <option value="transportation">Transportation</option>
                                 <option value="groceries">Groceries</option>
                                 <option value="transfer-out">Transfer (Outgoing)</option>
+                                <option value="other-out">Other (Outgoing)</option>
                             </optgroup>
                         </select>
-                    </p>
-                    <p>
-                        <label for="activity-date"></label>
+                    </div>
+                    <div class="form-group">
+                        <label for="activity-date">Date </label>
                         <input type="date" id="activity-date" name="activity-date" min="2026-01-01" required>
-                    </p>
-                    <legend class="submit button">
-                        <!--לבדוק האם צריך להכניס למאגר נתונים-->
-                        <div class="form-actions">
-                            <button type="submit" class="btn--success">Add to MoneyBuddy</button>
-                        </div>
-                    </legend>
-                </fieldset>
+                    </div>
+                    <button type="submit" class="btn--success">Add to MoneyBuddy</button>
+                </div>
             </form>
         </section>
         <section class="transaction-section recent activity">
-            <h2>Recent Activity</h2>
-            <small><a href="expense-history.html" class="history-link" style="font-size: smaller;">Full History --></a></small>
+            <div class="section-header">
+                <h2>Recent Activity</h2>
+                <a href="expense-history.html" class="history-link">Full History</a>
+            </div>
+            <div id="activity-list" class="activity-list-container">    </div>
         </section>
     </main>
     <footer class="main-footer">
@@ -119,7 +127,8 @@
             <p class="footer-copyright">© 2026 Final Project - Finnacial Planner.</p>
         </div>
     </footer>
-    <script rel="stylesheet" href="../js/transition.js"></script>
+    <div id="toast" class="toast-message">Transaction added successfully! ✅</div>
     <script src="../js/transaction.js"></script>
+    <script src="../js/transition.js"></script>
 </body>
 </html>
