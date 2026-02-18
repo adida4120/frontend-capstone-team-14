@@ -1,5 +1,4 @@
 document.addEventListener("DOMContentLoaded", function () {
-  console.log("history.js loaded");
 
   /* ========= DOM ========= */
   const txList = document.getElementById("txList");
