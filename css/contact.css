@@ -3,19 +3,23 @@
    ========================= */
 
 /* Page layout */
-body.page-contact{
+body.page-contact {
     background: #f8fafc;
-  padding: 1.6rem 0 2.6rem;
+    display: flex;       
+    flex-direction: column; 
+    min-height: 100vh;   
+    padding: 0;         
 }
 
 /*Card / Form */
 
-body.page-contact .page--center{
-    min-height: calc(100vh - 180px);
+body.page-contact .page--center {
+    flex: 1; 
     display: flex;
     justify-content: center;
     align-items: center;
- }
+    padding: 2rem 1rem;
+}
 body.page-contact form{
   position: relative; 
   overflow: hidden;
@@ -117,11 +121,20 @@ body.page-contact .success{
     font-size: 0.95rem;
     color: #059669;
 }
-
-.success.hidden{
+.success-box.hidden {
     display: none;
 }
 
+.success-box {
+    margin-top: 1.5rem;
+    padding: 1rem;
+    border-radius: 0.75rem;
+    background-color: #ecfdf5; 
+    color: #059669; 
+    text-align: center;
+    border: 1px solid #d1fae5;
+    font-weight: 600;
+}
 /* Button */
 body.page-contact .btn{
     padding: 0.75rem 1rem;
