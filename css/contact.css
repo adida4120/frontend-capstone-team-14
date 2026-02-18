@@ -10,7 +10,6 @@ body.page-contact{
 
 /*Card / Form */
 
-/* take the file to the center */
 body.page-contact .page--center{
     min-height: calc(100vh - 180px);
     display: flex;
@@ -18,8 +17,18 @@ body.page-contact .page--center{
     align-items: center;
  }
 body.page-contact form{
-  position: relative; /* חובה בשביל הפס */
-  overflow: hidden;   /* חותך את הפס לפי הרדיוס */
+  position: relative; 
+  overflow: hidden;
+
+  margin-top: 5rem;
+  max-width: 30rem;
+  width: 100%;
+  padding: 1.4rem;
+
+  border-radius: 1.25rem;
+  background: #fff;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 12px 30px rgba(6, 16, 60, 0.06);
 }
 
     /* blue top accent */
@@ -32,29 +41,9 @@ body.page-contact form::before{
   height: 5px;
   background-color: #2563eb;
     } 
-body.page-contact form{
-    margin-top: 5rem;
-    max-width: 30rem;
-    padding: 1.4rem;
-    border-radius: 1.25rem;
-    background: #fff;
-    border: 1px solid #e2e8f0;
-    box-shadow: 0 10px 28px rgba(6, 16, 60, 0.06);
-    /*ניתן לכתוב את SHADOW בצורה אחרת עם BORD*/
-}
 
-/*Fieldsets*/
-.filedset-contact{
-    border: 0;
-    padding: 0;
-    margin:0;
-}
 
 /*Titels*/
-/*filedest  אלמנט filedest שבא ישר אחרי אלמנט */
-body.page-contact fieldset {
-    margin-top: 1rem;
-}
 
 #leg-contact{
     font-size: 2rem; 
@@ -64,27 +53,25 @@ body.page-contact fieldset {
 }
 
 /* Intro text */
-body.page-contact.card--form {
+body.page-contact .card--form{
     margin-bottom: 1.25rem;
 }
 
 
 
 body.page-contact .card--form p{
-     /* font-size: 0.95rem;*/
     margin-bottom: 0.5rem; 
     color: #64748b;
     line-height: 1.5;
 }
 
 
-/* Fields */
-body.page-contact form > fieldset > div{
+/* Field blocks (each div that wraps label + input + small) */
+body.page-contact form > div{
     display: grid;
     gap: 0.4rem;
     margin-bottom: 0.75rem;
 }
-
 /* Labels */
 body.page-contact label{
     font-size: 0.75rem;
@@ -98,6 +85,7 @@ body.page-contact label{
 body.page-contact input[type="text"],
 body.page-contact input[type="email"],
 body.page-contact textarea{
+    width: 100%;
     padding: 0.85rem 1rem;
     font-size: 1rem;
     border-radius: 0.9rem;
@@ -130,40 +118,45 @@ body.page-contact .success{
     color: #059669;
 }
 
+.success.hidden{
+    display: none;
+}
+
 /* Button */
 body.page-contact .btn{
     padding: 0.75rem 1rem;
     font-size: 1rem;
     border-radius: 0.95rem;
 }
-.btn{
-  border: none;
-  cursor: pointer;
-}
 
-.btn--primary{
+
+body.page-contact .btn--primary{
   background: #2563eb;
   color: #fff;
 }
 
-.btn--full{
+body.page-contact .btn--full{
   width: 100%;
   font-weight:700;
 
 }
 
+/* Responsive */
 @media(max-width: 768px){
       body.page-contact .page--center{
     align-items: flex-start;   
     margin-top: 3rem;       
     min-height: auto;
-  }
+    }
+    
     body.page-contact form{
         padding:1.1rem;
         width: 90%;
     }
 
-    body.page-contact legend{
+    
+    
+    #leg-contact{
         font-size: 1.4rem;
     }
 
@@ -174,5 +167,6 @@ body.page-contact .btn{
 
     body.page-contact textarea{
         min-height: 7rem;
+        height: auto;
     }
 }
