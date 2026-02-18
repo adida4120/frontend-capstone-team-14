@@ -27,13 +27,13 @@
                     alt="money buddy logo">
                 <h1 id="home-title" class="main-title">Money Buddy</h1>
             </div>
-            <button class="menu-toggle" aria-label="Toggle Menu">
+            <button class="menu-toggle" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="primary-navigation">
                 <span class="bar"></span>
                 <span class="bar"></span>
                 <span class="bar"></span>
             </button>
-            <nav class="main-nav" aria-label="Main Navigation">
-                <a href="index.html" class="nav-link active">Home</a>
+            <nav class="main-nav" id="primary-navigation" aria-label="Main Navigation">
+                <a href="index.html" class="nav-link active" aria-current="page" >Home</a>
                 <a href="transaction.html" class="nav-link">Transaction</a>
                 <a href="expense-history.html" class="nav-link">History</a>
                 <a href="dashboard-planner.html" class="nav-link">Dashbord</a>
@@ -42,8 +42,8 @@
             </nav>
         </div>
     </header>
-    <section id="hero" class="page-section">
-        <h2 class="hero-main-title">
+    <section id="hero" class="page-section" aria-labelledby="hero-heading">
+        <h2 id="hero-heading" class="hero-main-title">
             Meet Your New <br> <em> MoneyBuddy.</em>
         </h2>
         <p class="hero-description">
@@ -54,7 +54,7 @@
             <a href="transaction.html" class="btn-white">Open My Vault</a>
         </div>
     </section>
-    <section class="features-grid">
+    <section class="features-grid" aria-label="Key Features">
         <div class="feature-card">
             <div class="feature-icon-box">
                 <img src="https://github.com/adida4120/frontend-capstone-team-14/blob/feature-layout/images/C4AB6665-47D4-498B-8C77-230FF5D304B2_4_5005_c.jpeg?raw=true"
@@ -89,7 +89,7 @@
             </p>
         </div>
     </section>
-    <footer class="main-footer">
+    <footer class="main-footer" aria-label="Site Footer">
         <div class="container footer-container">
             <div class="footer-logo">
                 <img src="https://github.com/adida4120/frontend-capstone-team-14/blob/feature-layout/images/MoneyBuddy_Logo.jpg?raw=true"
