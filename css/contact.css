@@ -1,0 +1,185 @@
+/* =========================
+   CONTACT PAGE 
+   ========================= */
+
+/* Page layout */
+body.page-contact {
+    background: #f8fafc;
+    display: flex;       
+    flex-direction: column; 
+    min-height: 100vh;   
+    padding: 0;         
+}
+
+/*Card / Form */
+
+body.page-contact .page--center {
+    flex: 1; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem 1rem;
+}
+body.page-contact form{
+  position: relative; 
+  overflow: hidden;
+
+  margin-top: 5rem;
+  max-width: 30rem;
+  width: 100%;
+  padding: 1.4rem;
+
+  border-radius: 1.25rem;
+  background: #fff;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 12px 30px rgba(6, 16, 60, 0.06);
+}
+
+    /* blue top accent */
+body.page-contact form::before{
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 5px;
+  background-color: #2563eb;
+    } 
+
+
+/*Titels*/
+
+#leg-contact{
+    font-size: 2rem; 
+    color: #1e293b;
+    margin-bottom: 0.75rem;
+    font-weight: 800;
+}
+
+/* Intro text */
+body.page-contact .card--form{
+    margin-bottom: 1.25rem;
+}
+
+
+
+body.page-contact .card--form p{
+    margin-bottom: 0.5rem; 
+    color: #64748b;
+    line-height: 1.5;
+}
+
+
+/* Field blocks (each div that wraps label + input + small) */
+body.page-contact form > div{
+    display: grid;
+    gap: 0.4rem;
+    margin-bottom: 0.75rem;
+}
+/* Labels */
+body.page-contact label{
+    font-size: 0.75rem;
+    letter-spacing: 0.12em;
+    font-weight: 800;
+    text-transform: uppercase;
+    color: #14203b;
+}
+
+/* Inputs & textarea */
+body.page-contact input[type="text"],
+body.page-contact input[type="email"],
+body.page-contact textarea{
+    width: 100%;
+    padding: 0.85rem 1rem;
+    font-size: 1rem;
+    border-radius: 0.9rem;
+    border: 1px solid #e2e8f0;
+    outline: none;
+}
+
+body.page-contact input:focus,
+body.page-contact textarea:focus{
+    border-color: #2563eb;
+    box-shadow: 0 0 0 4px rgba(37, 99,235, 0.12);
+}
+
+body.page-contact textarea{
+    min-height:auto;
+    height: 4.5rem;
+    resize: vertical;
+}
+
+/* Messages */
+body.page-contact .error{
+    font-size: 0.8rem;
+    min-height: 1.1rem;
+    color: #dc2626;
+}
+
+body.page-contact .success{
+    margin-top: 1rem;
+    font-size: 0.95rem;
+    color: #059669;
+}
+.success-box.hidden {
+    display: none;
+}
+
+.success-box {
+    margin-top: 1.5rem;
+    padding: 1rem;
+    border-radius: 0.75rem;
+    background-color: #ecfdf5; 
+    color: #059669; 
+    text-align: center;
+    border: 1px solid #d1fae5;
+    font-weight: 600;
+}
+/* Button */
+body.page-contact .btn{
+    padding: 0.75rem 1rem;
+    font-size: 1rem;
+    border-radius: 0.95rem;
+}
+
+
+body.page-contact .btn--primary{
+  background: #2563eb;
+  color: #fff;
+}
+
+body.page-contact .btn--full{
+  width: 100%;
+  font-weight:700;
+
+}
+
+/* Responsive */
+@media(max-width: 768px){
+      body.page-contact .page--center{
+    align-items: flex-start;   
+    margin-top: 3rem;       
+    min-height: auto;
+    }
+    
+    body.page-contact form{
+        padding:1.1rem;
+        width: 90%;
+    }
+
+    
+    
+    #leg-contact{
+        font-size: 1.4rem;
+    }
+
+     body.page-contact label{
+        font-size: 0.85rem;
+        margin-top: 0.5rem;
+    }
+
+    body.page-contact textarea{
+        min-height: 7rem;
+        height: auto;
+    }
+}

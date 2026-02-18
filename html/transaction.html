@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Manage your expenses and income with MoneyBuddy">
+    <title>MoneyBuddy | Transaction</title>
+    <link rel="stylesheet" href="../css/stylesheet.css">
+    <link rel="stylesheet" href="../css/transaction.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="icon" type="image/jpg" href="https://github.com/adida4120/frontend-capstone-team-14/blob/feature-layout/images/logo2.png?raw=true">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+</head>
+<body class="page-loaded">
+    <header class="main-header" aria-label="Site Header">
+        <div class="container header-container">
+            <div class="logo-group">
+                <img class="moneybuddy-logo"
+                    src="https://github.com/adida4120/frontend-capstone-team-14/blob/feature-layout/images/MoneyBuddy_Logo.jpg?raw=true"
+                    alt="money buddy logo">
+                <h1 id="home-title" class="main-title">Money Buddy</h1>
+            </div>
+            <button class="menu-toggle" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="primary-navigation">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </button>
+            <nav class="main-nav" id="primary-navigation" aria-label="Main Navigation">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="transaction.html" class="nav-link active" aria-current="page" >Transaction</a>
+                <a href="expense-history.html" class="nav-link">History</a>
+                <a href="dashboard-planner.html" class="nav-link">Dashboard</a>
+                <a href="about.html" class="nav-link">About</a>
+                <a href="contact.html" class="nav-link">Contact</a>
+            </nav>
+        </div>
+    </header>
+    <main>
+        <h1 class="page-main-title">New Transaction </h1>
+
+        <section class="transaction-section small-display"aria-label="sum cards">
+            <div class="grid-layout">
+                <div class="card-box" id="balance-card">
+                    <span id="balance-title"><small>CURRENT BALANCE</small></span>
+                    <h2 id="balance-value">0 $</h2>
+                </div>
+                <div class="card-box" id="income-card">
+                    <span id="income-title"><small>INCOME</small></span>
+                    <h3 id="income-Value">0 $</h3>
+                </div>
+                <div class="card-box" id="expense-card">
+                    <span id="expense-title"><small>EXPENSES</small></span>
+                    <h3 id="expense-Value">0 $</h3>
+                </div>
+            </div>
+        </section>
+        <section class="transaction-section add-transaction" aria-label="add transaction form">
+            <form id="new-transaction"  action="#" method="post" autocomplete="on">
+                <div class="form-header">
+                <img src="https://github.com/adida4120/frontend-capstone-team-14/blob/Work-Lior/images/income.png?raw=true" alt="income icons" width=40px>
+                <h2>New Action</h2>
+                <p>Add a new transaction to track your finances.</p>
+                </div>
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="action-name">Action Name </label>
+                        <input type="text" id="action-name" name="description" placeholder=" e.g., Groceries" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="amount">Amount </label>
+                        <input type="number" id="amount" name="amount" step="0.01" min="0" placeholder=" 0.00 $" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="category">Category </label>
+                        <select id="type-select" name="activity-category" required>
+                        <option value="category" disabled selected>Choose One</option>
+                        <option value="income">Income</option>
+                        <option value="expense">Expense</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="transaction-type">Transaction Type </label>
+                        <select id="transaction-type" name="transaction-type" required>
+                            <optgroup id="type" label="Select Type" disabled selected></optgroup>
+                            <optgroup id="group-income" label="Income">
+                                <option value="salary">Salary</option>
+                                <option value="refund">Refund</option>
+                                <option value="side Hustle">Side Hustle</option>
+                                <option value="transfer-in">Transfer (Incoming)</option>
+                                <option value="other-in">Other (Incoming)</option>
+                            </optgroup>
+                            <optgroup id="group-expense" label="Expense">
+                                <option value="rent">Rent</option>
+                                <option value="entertainment">Entertainment</option>
+                                <option value="shopping">Shopping</option>
+                                <option value="insurance">Insurance</option>
+                                <option value="transportation">Transportation</option>
+                                <option value="groceries">Groceries</option>
+                                <option value="transfer-out">Transfer (Outgoing)</option>
+                                <option value="other-out">Other (Outgoing)</option>
+                            </optgroup>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="activity-date">Date </label>
+                        <input type="date" id="activity-date" name="activity-date" min="2026-01-01" required>
+                    </div>
+                    <div class="form-group">
+                        <label style="visibility: hidden;">Placeholder</label> <button type="submit" class="btn--success" aria-label="Add transaction">Add to MoneyBuddy</button>
+                    </div>
+                </div>
+            </form>
+        </section>
+        <section class="transaction-section recent-activity" aria-label="show 5th last transaction">
+            <div class="section-header">
+                <h2>Recent Activity</h2>
+                <a href="expense-history.html" class="history-link">Full History</a>
+            </div>
+            <div id="activity-list" class="activity-list-container" aria-label="5th last transaction's">    </div>
+        </section>
+    </main>
+    <footer class="main-footer" aria-label="footer">
+        <div class="container footer-container">
+            <div class="footer-logo">
+                <img src="https://github.com/adida4120/frontend-capstone-team-14/blob/feature-layout/images/MoneyBuddy_Logo.jpg?raw=true" alt="money buddy logo" width=50px>
+                <span>MoneyBuddy</span>
+            </div>
+            <p class="footer-slogan">Making finance friendly, one buddy at a time.</p>
+            <p class="footer-copyright">© 2026 Final Project - Financial Planner.</p>
+        </div>
+    </footer>
+    <div id="toast" class="toast-message">Transaction added successfully! ✅</div>
+    <script src="../js/transaction.js"></script>
+    <script src="../js/common.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</body>
+</html>
