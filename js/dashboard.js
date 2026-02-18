@@ -4,21 +4,42 @@ let currentMonth = 0;
 let currentYear = 2026;
 let allTransactions = [];
 let myChart = null;
-
+const STORAGE_KEY = 'moneyBuddyData';
+let topCategoriesChart = null;
+let trendChart = null;
 async function loadData() {
     try {
-        let response = await fetch('../data/data.json'); 
-        if (!response.ok) throw new Error("Failed to load data"); 
+        const localData = localStorage.getItem(STORAGE_KEY);
         
-        allTransactions = await response.json(); 
-        console.log("נתונים נטענו בהצלחה:", allTransactions);
+        if (localData) {
+            allTransactions = JSON.parse(localData);
+            console.log("Data loaded from LocalStorage");
+        } else {
+            let response = await fetch('../data/data.json'); 
+            if (!response.ok) throw new Error("Failed to load data"); 
+            
+            allTransactions = await response.json(); 
+            // This line saves the JSON data to LocalStorage the very first time
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(allTransactions));
+        }
+        
         renderTrendChart(allTransactions);
         updateDashboard(); 
     } catch (error) {
-        console.error("שגיאה:", error); 
+        console.error("Error:", error); 
     }
 }
-
+window.addEventListener('storage', (event) => {
+    if (event.key === STORAGE_KEY) {
+        allTransactions = JSON.parse(event.newValue);
+        updateDashboard();
+        renderTrendChart(allTransactions);
+        console.log("Dashboard synced");
+    }
+});
+function saveToLocalStorage(){
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(allTransactions));
+}
 function updateDashboard() {
     let monthNames = ["January", "February", "March", "April", "May", "June",
         "July", "August", "September", "October", "November", "December"];
@@ -43,7 +64,7 @@ function calculateMonthlyStats(transactions, year, month) {
     let filtered = transactions.filter(tx => {
         let dateParts = tx.date.split("-");
         let d;
-       
+        // This handles both YYYY-MM-DD and DD-MM-YYYY formats
         if (dateParts[0].length === 4) {
             d = new Date(tx.date); 
         } else {
@@ -150,8 +171,6 @@ function renderChart(categoryData) {
         }
     });
 }
-let topCategoriesChart = null; 
-
 
 //TOP CATEGORIES CHART//
 function renderBarChart(categoryData) {
@@ -208,7 +227,6 @@ function renderBarChart(categoryData) {
         }
     });
 }
-let trendChart = null;
 
 
 //6 MONTH TREND CHART//
