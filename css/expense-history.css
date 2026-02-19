@@ -31,6 +31,8 @@
   }
 }
 
+
+
 #exportBtn {
   width: auto;
   flex: 0 0 auto;
@@ -38,6 +40,11 @@
   white-space: nowrap;
   padding: 0.85rem 1.2rem;
   border-radius: 0.9rem;
+}
+
+ #exportBtn:hover{
+  transform: translateY(-3px);
+  box-shadow: 0 14px 30px rgba(15, 23, 42, 0.12);
 }
 
 .history-title {
@@ -49,11 +56,9 @@
 }
 
 
-
 /* -------------------------
    Cards
    ------------------------- */
-
 .history-filters.card--panel,
 .history-summary.card--panel,
 .history-list.card--panel {
@@ -74,8 +79,8 @@
 .history-filters .filter-group {
   display: grid;
   grid-template-columns: 2fr 1.2fr 1.2fr;
-  gap: 1rem;
-  align-items: end;
+  gap: 0.5rem;
+  align-items:baseline;
 }
 
 /* each field */
@@ -109,9 +114,9 @@
 
 /* labels */
 .history-filters label {
-  font-size: 0.78rem;
+  font-size: 0.95rem;
   font-weight: 800;
-  letter-spacing: 0.12rem;
+  letter-spacing: 0.02rem;
   text-transform: uppercase;
   color: #0f2b5b;
 }
@@ -296,7 +301,6 @@
   #exportBtn {
     margin-left: auto;
   }
-
   .tx-item {
     display: grid;
     grid-template-columns: 44px 1fr auto;
