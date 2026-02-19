@@ -301,7 +301,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // amount
     const amount = document.createElement("div");
     amount.className = "tx-amount";
-    amount.textContent = (isIncome ? "+ ₪" : "- ₪") + Number(tx.amount || 0).toLocaleString();
+    amount.textContent = (isIncome ? "+ $" : "- $") + Number(tx.amount || 0).toLocaleString();
 
     // delete (optional UI only)
     const delBtn = document.createElement("button");
@@ -378,11 +378,23 @@ document.addEventListener("DOMContentLoaded", function () {
     URL.revokeObjectURL(url);
   }
 
-  function safeCSV(val) {
-    // Wrap in quotes and escape quotes
-    const s = (val === null || val === undefined) ? "" : String(val);
-    return '"' + s.replace(/"/g, '""') + '"';
+function safeCSV(val) {
+  if (val === null || val === undefined) {
+    return '""';
   }
+
+  var text = String(val);
+
+  // If there are no double quotes, just wrap with quotes
+  if (text.indexOf('"') === -1) {
+    return '"' + text + '"';
+  }
+
+  // Replace " with "" using split/join (no regex)
+  var newText = text.split('"').join('""');
+
+  return '"' + newText + '"';
+}
 
   /* ========= DATE HELPERS ========= */
   function parseDMY(dmy) {

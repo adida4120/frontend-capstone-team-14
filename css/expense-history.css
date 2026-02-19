@@ -54,17 +54,19 @@
    Cards
    ------------------------- */
 
-
 .history-filters.card--panel,
 .history-summary.card--panel,
 .history-list.card--panel {
   background: #fff;
   border-radius: 1rem;
   padding: 1.2rem;
-  box-shadow: 0 12px 28px rgba(2, 6, 23, 0.08);
+  box-shadow: 0 12px 28px rgba(1, 5, 20, 0.08);
 }
 
-
+.history-filters.card--panel:hover {
+      transform: translateZ(-10px);
+      box-shadow: 0 12px 20px rgba(0, 0, 0, 0.555);
+  }
 
 /* =========================
    FILTERS (clean + responsive)

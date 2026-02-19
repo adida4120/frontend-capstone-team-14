@@ -77,16 +77,16 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         const totalBalance = totalIncome - totalExpense;
-        incomeValueEl.textContent = `${totalIncome.toLocaleString()} ₪`;
-        expenseValueEl.textContent = `${totalExpense.toLocaleString()} ₪`;
+        incomeValueEl.textContent = `$${totalIncome.toLocaleString()}`;
+        expenseValueEl.textContent = `$${totalExpense.toLocaleString()}`;
 
         if (totalBalance >= 0) {
-            balanceValueEl.textContent = `${totalBalance.toLocaleString()} ₪`;
+            balanceValueEl.textContent = `$${totalBalance.toLocaleString()}`;
             balanceValueEl.style.color = '#ffffff';
             balanceValueEl.style.fontWeight = '700';
         } else {
-            balanceValueEl.textContent = `${totalBalance.toLocaleString()} ₪`;
-            balanceValueEl.style.color = '#ff4d4d'; // אדום בהיר
+            balanceValueEl.textContent = `$${totalBalance.toLocaleString()}`;
+            balanceValueEl.style.color = '#ff4d4d'; 
             balanceValueEl.style.fontWeight = '900';
         }
     }
@@ -129,7 +129,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     </div>
                 </div>
                 <div class="activity-right-side">
-                    <span class="activity-amount ${typeClass}">${item.type === 'income' ? '' : '-'} ${formattedAmount} ₪</span>
+                    <span class="activity-amount ${typeClass}">${item.type === 'income' ? '' : '-'} ${formattedAmount} $</span>
                     <button onclick="deleteTransaction('${item.id}')" class="btn-delete-icon">🗑️</button>
                 </div>
                 <div class="status-bar ${item.type}"></div>
